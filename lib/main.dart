@@ -22,10 +22,6 @@ class StartApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: const IntroScreen(),
       home: const SplashScreen(),
-      // home: const RealGame(),
-      // home: const SettingsPage(),
-      // home: const GameStartConfo(),
-      // home: const GameStarterTimer(),
       theme: ThemeData(
           textTheme: const TextTheme(
             displayLarge: TextStyle(
