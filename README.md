@@ -73,3 +73,91 @@ Mathmatica Mind is an innovative Math Game application designed to challenge and
 ## Building from Source
 
 1. If you don't have Flutter SDK installed, please visit official [Flutter](https://flutter.dev/) site.
+```
+https://flutter.dev/
+```
+
+2. Fetch latest source code from master branch.
+```
+git clone https://github.com/Prashant-ranjan-singh-123/Mathmatica-Mind.git
+```
+
+3. Download Dependency:
+```
+flutter pub get
+```
+
+4. Run the app with Android Studio or VS Code.
+```
+flutter run
+```
+
+<br>
+
+## TODO
+
+- [ ] Add Documentation.
+
+<br>
+
+## Contributing
+
+If you want to contribute to a project and make it better, your help is very welcome. Contributing is also a great way to learn more about social coding on Github, new technologies and and their ecosystems and how to make constructive, helpful bug reports, feature requests and the noblest of all contributions: a good, clean pull request.
+
+### How to make a clean pull request
+
+Look for a project's contribution instructions. If there are any, follow them.
+
+- Create a personal fork of the project on Github.
+- Clone the fork on your local machine. Your remote repo on Github is called `origin`.
+- Add the original repository as a remote called `upstream`.
+- If you created your fork a while ago be sure to pull upstream changes into your local repository.
+- Create a new branch to work on! Branch from `develop` if it exists, else from `master`.
+- Implement/fix your feature, comment your code.
+- Follow the code style of the project, including indentation.
+- If the project has tests run them!
+- Write or adapt tests as needed.
+- Add or change the documentation as needed.
+- Squash your commits into a single commit with git's [interactive rebase](https://help.github.com/articles/interactive-rebase). Create a new branch if necessary.
+- Push your branch to your fork on Github, the remote `origin`.
+- From your fork open a pull request in the correct branch. Target the project's `develop` branch if there is one, else go for `master`!
+- ...
+- Once the pull request is approved and merged you can pull the changes from `upstream` to your local repo and delete
+  your extra branch(es).
+
+And last but not least: Always write your commit messages in the present tense. Your commit message should describe what the commit, when applied, does to the code – not what you did to the code.
+
+
+<br>
+
+### License
+
+```
+MIT License
+
+Copyright (c) 2024 Prashant Ranjan Singh
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+## 👨‍💻 Contributors
+
+<a href='https://github.com/Prashant-ranjan-singh-123/Mathmatica-Mind/graphs/contributors'>
+  <img src='https://contrib.rocks/image?repo=Prashant-ranjan-singh-123/Mathmatica-Mind' />
+</a>
