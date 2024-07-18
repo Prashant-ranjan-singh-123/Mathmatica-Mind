@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:mathmatics_mind/Data/app_assets.dart';
-import 'package:mathmatics_mind/screens/setting_screen/setting_screen.dart';
-import '../../Data/quotes.dart';
-import '../../shared/IntroScreenWidgets.dart';
-import '../../shared/app_bar.dart';
-import '../../shared/theme.dart';
-import '../game_screens/game_start_conf.dart';
+
+import '../../../Data/quotes.dart';
+import '../../../shared/IntroScreenWidgets.dart';
+import '../../../shared/app_bar.dart';
+import '../../../shared/theme.dart';
+import '../setting_screen/setting_screen.dart';
+import 'game_screens/game_start_conf.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});

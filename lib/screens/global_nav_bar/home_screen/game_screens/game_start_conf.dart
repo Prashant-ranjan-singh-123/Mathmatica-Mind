@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:mathmatics_mind/Data/app_assets.dart';
-import 'package:mathmatics_mind/screens/setting_screen/setting_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../shared/IntroScreenWidgets.dart';
-import '../../shared/theme.dart';
+import '../../../../shared/IntroScreenWidgets.dart';
+import '../../../../shared/theme.dart';
+import '../../setting_screen/setting_screen.dart';
 import 'game_count_down.dart';
 
 var totalQusetion;

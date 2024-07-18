@@ -7,9 +7,9 @@ import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:mathmatics_mind/Data/app_assets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../shared/IntroScreenWidgets.dart';
-import '../../shared/app_bar.dart';
-import '../../shared/theme.dart';
+import '../../../shared/IntroScreenWidgets.dart';
+import '../../../shared/app_bar.dart';
+import '../../../shared/theme.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
