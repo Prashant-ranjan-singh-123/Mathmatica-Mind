@@ -156,7 +156,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                         child: Column(
                           children: [
-                            const Text('Total Questions', style: TextStyle(
+                            const Text('Total Question', style: TextStyle(
                               fontFamily: 'Roboto',
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
