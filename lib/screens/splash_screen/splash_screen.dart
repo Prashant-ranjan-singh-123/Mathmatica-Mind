@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:mathmatics_mind/Data/app_strings.dart';
+import '../../Data/app_assets.dart';
 import '../../check_first_time.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -8,6 +10,9 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appAssets = Get.find<AppAssets>();
+    final appString = Get.find<AppStrings>();
+
     Future.delayed(const Duration(milliseconds: 1500), (){
       Get.off(const CheckFirstTime(),transition: Transition.fade, duration: const Duration(milliseconds: 500));
     });
@@ -23,11 +28,11 @@ class SplashScreen extends StatelessWidget {
               shadowColor: Colors.white,
               color: HexColor('#071185'),
               child: SizedBox(
-                  width: 200, height: 200, child: Image.asset('assets/icon.png')),
+                  width: 200, height: 200, child: Image.asset(appAssets.appImage)),
             ),
           ),
           const SizedBox(height: 50,),
-          const Text('Mathmatica Mind', style: TextStyle(
+          Text(appString.nameOfApp, style: const TextStyle(
             fontFamily: 'Oswald',
             fontWeight: FontWeight.w800,
             fontSize: 35,

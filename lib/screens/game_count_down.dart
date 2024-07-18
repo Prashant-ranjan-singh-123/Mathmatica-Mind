@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
+import 'package:mathmatics_mind/Data/app_assets.dart';
 import 'package:mathmatics_mind/screens/real_game.dart';
 import '../shared/theme.dart';
 
@@ -19,6 +20,7 @@ class _GameStarterTimerState extends State<GameStarterTimer> {
   var keyType;
   var difficulty;
   String difficultyIs='Easy';
+  final appAssets = Get.find<AppAssets>();
 
   void nxtPage() {
     if (_shouldNavigate) {
@@ -59,7 +61,7 @@ class _GameStarterTimerState extends State<GameStarterTimer> {
     return Scaffold(
       backgroundColor: HexColor(ThemesOfProject().background),
       body: Center(
-        child: Lottie.asset('assets/timer.json', repeat: false),
+        child: Lottie.asset(appAssets.lottieTimer, repeat: false),
       ),
     );
   }

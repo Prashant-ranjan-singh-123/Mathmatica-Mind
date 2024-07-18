@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:mathmatics_mind/Data/app_assets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../shared/IntroScreenWidgets.dart';
 import '../shared/app_bar.dart';
@@ -22,6 +24,8 @@ SharedPreferences? pref;
 bool _isClicked = false;
 
 class _SettingsPageState extends State<SettingsPage> {
+  final appAssets = Get.find<AppAssets>();
+
   var keyBoardMap={
     00:1,10:2,20:3,
     01:4,11:5,21:6,
@@ -119,7 +123,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         heightIs: MediaQuery.of(context).size.width*0.5,
                       cardColor: ThemesOfProject().secondary_colors,
                       cardShadingColor: _isClicked? ThemesOfProject().background : '#a3a2ba',
-                      lottieAsset: 'assets/setting.json',),
+                      lottieAsset: appAssets.lottieSetting,),
 
                     onTapDown: (_) {
                       setState(() {

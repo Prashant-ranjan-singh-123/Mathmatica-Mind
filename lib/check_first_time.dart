@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mathmatics_mind/screens/intro_screen.dart';
-import 'package:mathmatics_mind/screens/on_boarding/config_on_boarding_page.dart';
+import 'package:mathmatics_mind/screens/on_boarding/onboard_logic.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
@@ -27,7 +27,7 @@ class _CheckFirstTimeState extends State<CheckFirstTime> {
       return true;
     } else {
       // await prefs.setBool('isFirst', true);
-      return false;
+      return true;
     }
   }
 
@@ -40,9 +40,9 @@ class _CheckFirstTimeState extends State<CheckFirstTime> {
           return const CircularProgressIndicator();
         } else {
           if(isFirstRun==true){
-            return const OnBoardingScreen();
+            return OnboardLogic();
           }else if (snapshot.data == true) {
-            return const OnBoardingScreen();
+            return OnboardLogic();
           }else {
             return const IntroScreen();
           }

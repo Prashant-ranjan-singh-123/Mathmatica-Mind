@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:mathmatics_mind/Data/app_assets.dart';
 import 'package:mathmatics_mind/screens/setting_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../shared/IntroScreenWidgets.dart';
@@ -25,6 +26,7 @@ class GameStartConfo extends StatefulWidget {
 
 class _GameStartConfoState extends State<GameStartConfo> {
   bool _isClicked = false;
+  final appAssets = Get.find<AppAssets>();
 
   void startGame(){
     Get.off(
@@ -139,7 +141,7 @@ class _GameStartConfoState extends State<GameStartConfo> {
                       heightIs: Get.width*0.5,
                       cardColor: ThemesOfProject().secondary_colors,
                       cardShadingColor: _isClicked? ThemesOfProject().background:'#6363bf',
-                      lottieAsset: 'assets/confPlayGameLottie.json',),
+                      lottieAsset: appAssets.lottiePlayGame,),
 
                     onTapDown: (_) {
                       setState(() {

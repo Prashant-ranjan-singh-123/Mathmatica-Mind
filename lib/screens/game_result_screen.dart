@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:mathmatics_mind/Data/app_assets.dart';
 import 'package:mathmatics_mind/screens/game_start_conf.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../shared/IntroScreenWidgets.dart';
@@ -26,6 +27,7 @@ class _GameResultState extends State<GameResult> {
   bool _isClicked = false;
   late double avg_time;
   late List<int> Scores;
+  final appAssets = Get.find<AppAssets>();
 
   // Shared Pref Name:-
   //
@@ -257,7 +259,7 @@ class _GameResultState extends State<GameResult> {
                       cardShadingColor: _isClicked
                           ? ThemesOfProject().background
                           : '#a3a2ba',
-                      lottieAsset: 'assets/scoreboard_anim.json',
+                      lottieAsset: appAssets.lottieScoreBoard,
                     ),
                     onTapDown: (_) {
                       setState(() {

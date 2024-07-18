@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:mathmatics_mind/Data/app_assets.dart';
 import 'package:mathmatics_mind/screens/setting_screen.dart';
 import '../Data/quotes.dart';
 import '../shared/IntroScreenWidgets.dart';
@@ -20,6 +21,7 @@ class IntroScreen extends StatefulWidget {
 class _IntroScreenState extends State<IntroScreen> {
   String quoteOfTheDay = '';
   bool _isClicked = false;
+  final appAsset = Get.find<AppAssets>();
 
   @override
   void initState() {
@@ -102,7 +104,7 @@ class _IntroScreenState extends State<IntroScreen> {
                       heightIs: MediaQuery.of(context).size.width*0.4,
                       cardColor: ThemesOfProject().secondary_colors,
                       cardShadingColor: _isClicked? ThemesOfProject().background : '#a3a2ba',
-                      lottieAsset: 'assets/Brain.json',),
+                      lottieAsset: appAsset.lottieBrain,),
                     onTapDown: (_) {
                       setState(() {
                         _isClicked = true;
