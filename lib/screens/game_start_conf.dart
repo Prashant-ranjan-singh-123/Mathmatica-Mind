@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:mathmatics_mind/screens/setting_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../Theme/theme.dart';
-import '../Widgets/IntroScreenWidgets.dart';
+import '../shared/IntroScreenWidgets.dart';
+import '../shared/theme.dart';
 import 'game_count_down.dart';
+
 var totalQusetion;
 var operation;
 var keyType;

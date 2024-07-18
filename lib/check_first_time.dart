@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mathmatics_mind/screens/intro_screen.dart';
+import 'package:mathmatics_mind/screens/on_boarding/config_on_boarding_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'on_boarding/config_on_boarding_page.dart';
 
 
 class CheckFirstTime extends StatefulWidget {

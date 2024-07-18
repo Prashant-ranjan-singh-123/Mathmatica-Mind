@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:mathmatics_mind/screens/setting_screen.dart';
 import '../Data/quotes.dart';
-import '../Theme/theme.dart';
-import '../Widgets/IntroScreenWidgets.dart';
-import '../Widgets/app_bar.dart';
+import '../shared/IntroScreenWidgets.dart';
+import '../shared/app_bar.dart';
+import '../shared/theme.dart';
 import 'game_start_conf.dart';
 
 class IntroScreen extends StatefulWidget {

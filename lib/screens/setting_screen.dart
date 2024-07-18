@@ -5,10 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../Theme/theme.dart';
-import '../Widgets/IntroScreenWidgets.dart';
-import '../Widgets/app_bar.dart';
+import '../shared/IntroScreenWidgets.dart';
+import '../shared/app_bar.dart';
+import '../shared/theme.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});

@@ -6,9 +6,8 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:mathmatics_mind/screens/game_result_screen.dart';
-
 import '../Data/question_generate.dart';
-import '../Theme/theme.dart';
+import '../shared/theme.dart';
 
 class RealGame extends StatefulWidget {
   const RealGame({super.key});

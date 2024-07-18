@@ -3,8 +3,7 @@ import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mathmatics_mind/screens/real_game.dart';
-
-import '../Theme/theme.dart';
+import '../shared/theme.dart';
 
 class GameStarterTimer extends StatefulWidget {
   const GameStarterTimer({super.key});

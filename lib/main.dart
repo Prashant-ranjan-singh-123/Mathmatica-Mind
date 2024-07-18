@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:mathmatics_mind/screens/splash_screen.dart';
-
-import 'Theme/theme.dart';
+import 'package:mathmatics_mind/screens/splash_screen/splash_screen.dart';
 
 void main(){
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -11,7 +9,7 @@ void main(){
     statusBarBrightness: Brightness.light,
     statusBarIconBrightness: Brightness.light,
   ));
-  runApp(StartApp());
+  runApp(const StartApp());
 }
 
 class StartApp extends StatelessWidget {
