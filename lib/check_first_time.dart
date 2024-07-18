@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mathmatics_mind/screens/intro_screen.dart';
+import 'package:mathmatics_mind/screens/home_screen/intro_screen.dart';
 import 'package:mathmatics_mind/screens/on_boarding/onboard_logic.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -6,7 +6,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:get/get.dart';
 import '../../Data/app_assets.dart';
 import '../../shared/theme.dart';
-import '../intro_screen.dart';
+import '../home_screen/intro_screen.dart';
 import 'onboard_display_page.dart';
 
 class OnboardLogic extends StatefulWidget {

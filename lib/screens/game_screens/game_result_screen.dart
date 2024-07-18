@@ -5,11 +5,10 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:mathmatics_mind/Data/app_assets.dart';
-import 'package:mathmatics_mind/screens/game_start_conf.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../shared/IntroScreenWidgets.dart';
-import '../shared/app_bar.dart';
-import '../shared/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';import '../../shared/IntroScreenWidgets.dart';
+import '../../shared/app_bar.dart';
+import '../../shared/theme.dart';
+import 'game_start_conf.dart';
 
 class GameResult extends StatefulWidget {
   const GameResult({super.key});

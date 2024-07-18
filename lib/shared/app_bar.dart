@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
-import '../screens/setting_screen.dart';
+import '../screens/setting_screen/setting_screen.dart';
 import 'theme.dart';
 
 
