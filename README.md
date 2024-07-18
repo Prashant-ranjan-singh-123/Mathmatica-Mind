@@ -4,11 +4,11 @@
 
 </div>
 
-<h1 align="center">Mathmatica mind</h1>
+<h1 align="center">Mathmatica Mind</h1>
 
 
 <p align="center">
-  <img alt="Food-Mania" src="https://img.shields.io/badge/Food%20Mania-00d1a7?style=for-the-badge&logo=flutter&logoColor=white"/>
+  <img alt="Mathmatica-Mind" src="https://img.shields.io/badge/Food%20Mania-00d1a7?style=for-the-badge&logo=flutter&logoColor=white"/>
   <img alt="API" src="https://img.shields.io/badge/Api%2024+-50f270?style=for-the-badge&logo=android&logoColor=black"/>
   <img alt="Material You" src="https://custom-icon-badges.demolab.com/badge/material%20you-lightblue?style=for-the-badge&logo=material-you&logoColor=333"/>
 </p>
