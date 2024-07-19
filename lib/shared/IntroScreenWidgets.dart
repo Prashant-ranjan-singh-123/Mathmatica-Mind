@@ -70,7 +70,7 @@ class GameCard extends StatelessWidget {
                           borderRadius: const BorderRadius.all(
                             Radius.circular(20.0),
                           ),
-                          color: HexColor(ThemesOfProject().secondary_colors),
+                          color: HexColor('#a3a2ba'),
                         ),
                         child: Center(
                           child: icon1,
@@ -126,7 +126,7 @@ class GameCard extends StatelessWidget {
                           borderRadius: const BorderRadius.all(
                             Radius.circular(20.0),
                           ),
-                          color: HexColor(ThemesOfProject().secondary_colors),
+                          color: HexColor('#a3a2ba'),
                         ),
                         child: Center(
                           child: icon2,
@@ -147,8 +147,8 @@ class GameCard extends StatelessWidget {
 class beautifulLottieCard extends StatelessWidget{
   final double widthIs;
   final double heightIs;
-  final String cardColor;
-  final String cardShadingColor;
+  final Color cardColor;
+  final Color cardShadingColor;
   final String lottieAsset;
 
   const beautifulLottieCard({
@@ -170,14 +170,14 @@ class beautifulLottieCard extends StatelessWidget{
           border: Border.all(color: Colors.black, width: 3),
           boxShadow: [
             BoxShadow(
-              color: HexColor(cardShadingColor),
+              color: cardShadingColor,
               blurStyle: BlurStyle.outer,
               spreadRadius: 1,
               blurRadius: 40,
             )
           ],
           borderRadius: const BorderRadius.all(Radius.circular(15.0)),
-          color: HexColor(cardColor),
+          color: cardColor,
         ),
         child: Lottie.asset(lottieAsset, width: double.infinity, height: double.infinity, reverse: true),
       ),
@@ -188,8 +188,8 @@ class beautifulLottieCard extends StatelessWidget{
 class beautifulLottieCardIntro extends StatelessWidget{
   final double widthIs;
   final double heightIs;
-  final String cardColor;
-  final String cardShadingColor;
+  final Color cardColor;
+  final Color cardShadingColor;
   final String lottieAsset;
 
   const beautifulLottieCardIntro({
@@ -211,14 +211,14 @@ class beautifulLottieCardIntro extends StatelessWidget{
           border: Border.all(color: Colors.black, width: 3),
           boxShadow: [
             BoxShadow(
-              color: HexColor(cardShadingColor),
+              color: cardShadingColor,
               blurStyle: BlurStyle.normal,
               spreadRadius: 1,
               blurRadius: 20,
             )
           ],
           borderRadius: const BorderRadius.all(Radius.circular(15.0)),
-          color: HexColor(cardColor),
+          color: cardColor,
         ),
         child: Lottie.asset(lottieAsset, width: double.infinity, height: double.infinity, reverse: false),
       ),
@@ -251,7 +251,7 @@ class PlayerReadingText extends StatelessWidget{
               fontFamily: 'Oswald',
               fontWeight: FontWeight.w800,
               fontSize: 35,
-              color: HexColor(ThemesOfProject().split_complementary_colors),
+              color: HexColor('#a3a2ba'),
             ),
           ),
         ),
@@ -263,7 +263,7 @@ class PlayerReadingText extends StatelessWidget{
             style: TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 15,
-              color: HexColor(ThemesOfProject().square_colors),
+              color: HexColor('#a3a2ba'),
             ),
           ),
         ),

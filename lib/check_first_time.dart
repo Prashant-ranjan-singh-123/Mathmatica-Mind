@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mathmatics_mind/screens/global_nav_bar/home_screen/intro_screen.dart';
+import 'package:mathmatics_mind/screens/global_nav_bar/global_nav_bar.dart';
 import 'package:mathmatics_mind/screens/on_boarding/onboard_logic.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -44,7 +44,7 @@ class _CheckFirstTimeState extends State<CheckFirstTime> {
           }else if (snapshot.data == true) {
             return OnboardLogic();
           }else {
-            return const IntroScreen();
+            return const GlobalNavBar();
           }
         }
       },

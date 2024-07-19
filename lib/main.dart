@@ -15,11 +15,11 @@ class InitialBinding extends Bindings {
 
 void main(){
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Color.fromRGBO(12,5,77,1),
-    statusBarBrightness: Brightness.light,
-    statusBarIconBrightness: Brightness.light,
-  ));
+  // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+  //   statusBarColor: Color.fromRGBO(12,5,77,1),
+  //   statusBarBrightness: Brightness.light,
+  //   statusBarIconBrightness: Brightness.light,
+  // ));
   runApp(const StartApp());
 }
 

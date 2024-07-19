@@ -60,7 +60,7 @@ class _GameStarterTimerState extends State<GameStarterTimer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(ThemesOfProject().background),
+      backgroundColor: HexColor('#a3a2ba'),
       body: Center(
         child: Lottie.asset(appAssets.lottieTimer, repeat: false),
       ),

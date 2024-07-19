@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:mathmatics_mind/Data/app_assets.dart';
+import 'package:mathmatics_mind/shared/background.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../shared/IntroScreenWidgets.dart';
 import '../../../shared/app_bar.dart';
@@ -109,169 +110,209 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(ThemesOfProject().background),
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 150),
-              child: Column(
-                children: [
-                  GestureDetector(
-                    child: beautifulLottieCard(
-                        widthIs: MediaQuery.of(context).size.width*0.8,
-                        heightIs: MediaQuery.of(context).size.width*0.5,
-                      cardColor: ThemesOfProject().secondary_colors,
-                      cardShadingColor: _isClicked? ThemesOfProject().background : '#a3a2ba',
-                      lottieAsset: appAssets.lottieSetting,),
-
-                    onTapDown: (_) {
-                      setState(() {
-                        _isClicked = true;
-                      });
-                    },
-                    onTapUp: (_) {
-                      setState(() {
-                        _isClicked = false;
-                      });
-                    },
-                    onTapCancel: () {
-                      setState(() {
-                        _isClicked = false;
-                      });
-                    },
-                  ),
-
-                  const SizedBox(height: 50,),
-
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width*0.8,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black, width: 3),
-                          borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-                          color: HexColor(ThemesOfProject().secondary_colors),
+      backgroundColor: Colors.black,
+      body: CommonUsedWidget.background(
+        child: Stack(
+          children: [
+            SafeArea(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                          child: Text(
+                            'Game Settings',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w900,
+                                fontSize: 25,
+                                color: ColorOfApp.textBold,
+                                fontFamily: 'Oswald'),
+                          ),
                         ),
-                        child: Column(
-                          children: [
-                            const Text('Total Question', style: TextStyle(
-                              fontFamily: 'Roboto',
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white
-                            )),
-
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      ],
+                    ),
+                    SizedBox(height: 50,),
+                    GestureDetector(
+                      child: beautifulLottieCard(
+                          widthIs: MediaQuery.of(context).size.width*0.8,
+                          heightIs: MediaQuery.of(context).size.width*0.5,
+                        cardColor: ColorOfApp.card,
+                        cardShadingColor: _isClicked? Colors.transparent : ColorOfApp.cardShadow.withOpacity(0.4),
+                        lottieAsset: appAssets.lottieSetting,),
+                        
+                      onTapDown: (_) {
+                        setState(() {
+                          _isClicked = true;
+                        });
+                      },
+                      onTapUp: (_) {
+                        setState(() {
+                          _isClicked = false;
+                        });
+                      },
+                      onTapCancel: () {
+                        setState(() {
+                          _isClicked = false;
+                        });
+                      },
+                    ),
+                        
+                    const SizedBox(height: 50,),
+                        
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width*0.8,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black, width: 3),
+                            borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                            color: ColorOfApp.card,
+                            boxShadow: [
+                              BoxShadow(
+                                color: ColorOfApp.cardShadow.withOpacity(0.2),
+                                blurStyle: BlurStyle.outer,
+                                blurRadius: 20,
+                              )
+                            ]
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: Column(
                               children: [
-                                _totalQuestionRadio(10),
-                                _totalQuestionRadio(20),
-                                _totalQuestionRadio(30),
-                                _totalQuestionRadio(40),
+                                const Text('Total Question', style: TextStyle(
+                                  fontFamily: 'Roboto',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white
+                                )),
+                
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    _totalQuestionRadio(10),
+                                    _totalQuestionRadio(20),
+                                    _totalQuestionRadio(30),
+                                    _totalQuestionRadio(40),
+                                    SizedBox()
+                                  ],
+                                ),
                               ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-
-                  const SizedBox(height: 25,),
-
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width*0.8,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black, width: 3),
-                          borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-                          color: HexColor(ThemesOfProject().secondary_colors),
-                        ),
-                        child: Column(
-                          children: [
-                            const Text('Difficulty', style: TextStyle(
-                                fontFamily: 'Roboto',
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white
-                            )),
-
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      ],
+                    ),
+                        
+                    const SizedBox(height: 25,),
+                        
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width*0.8,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black, width: 3),
+                            borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                              color: ColorOfApp.card,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: ColorOfApp.cardShadow.withOpacity(0.2),
+                                  blurStyle: BlurStyle.outer,
+                                  blurRadius: 20,
+                                )
+                              ]
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 15),
+                            child: Column(
                               children: [
-                                _difficultyRadio(1, 'Easy'),
-                                _difficultyRadio(2, 'Medium'),
-                                _difficultyRadio(3, 'Hard'),
+                                const Text('Difficulty', style: TextStyle(
+                                    fontFamily: 'Roboto',
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white
+                                )),
+                
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    _difficultyRadio(1, 'Easy'),
+                                    _difficultyRadio(2, 'Medium'),
+                                    _difficultyRadio(3, 'Hard'),
+                                    const SizedBox()
+                                  ],
+                                ),
                               ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-
-                  const SizedBox(height: 25,),
-
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width*0.8,
-                        height: MediaQuery.of(context).size.width*1.1,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black, width: 3),
-                          // boxShadow: [
-                          //   BoxShadow(
-                          //     color: HexColor(cardShadingColor),
-                          //     blurStyle: BlurStyle.outer,
-                          //     spreadRadius: 1,
-                          //     blurRadius: 40,
-                          //   )
-                          // ],
-                          borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-                          color: HexColor(ThemesOfProject().secondary_colors),
-                        ),
-                        child: Column(
-                          
-                          children: [
-                            const Text('Keyboard Type', style: TextStyle(
-                                fontFamily: 'Roboto',
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white
-                            )),
-
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      ],
+                    ),
+                        
+                    const SizedBox(height: 25,),
+                        
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width*0.8,
+                          height: MediaQuery.of(context).size.width*1.1,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black, width: 3),
+                            borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                              color: ColorOfApp.card,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: ColorOfApp.cardShadow.withOpacity(0.2),
+                                  blurStyle: BlurStyle.outer,
+                                  blurRadius: 20,
+                                )
+                              ]
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            child: Column(
                               children: [
-                                _keyTypeRadio(1, 'Phone'),
-                                _keyTypeRadio(2, 'Calculator'),
+                                const Text('Keyboard Type', style: TextStyle(
+                                    fontFamily: 'Roboto',
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white
+                                )),
+                
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    _keyTypeRadio(1, 'Phone'),
+                                    _keyTypeRadio(2, 'Calculator'),
+                                  ],
+                                ),
+                
+                
+                                Expanded(child: _keyBoardType())
+                
+                
                               ],
                             ),
-
-
-                            Expanded(child: _keyBoardType())
-
-
-                          ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-
-                  const SizedBox(height: 25,),
-                ],
+                      ],
+                    ),
+                        
+                    const SizedBox(height: 25,),
+                  ],
+                ),
               ),
             ),
-          ),
-
-          const AppBarCustom(title: 'Game Settings',
-              isCenter: true,
-              showSettingIcon: false),
-        ],
+        
+            const AppBarCustom(title: '',
+                isCenter: true,
+                showSettingIcon: false),
+          ],
+        ),
       ),
     );
   }
@@ -373,24 +414,34 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   Widget _keyboardCard(String value){
-    return Container(
-        width: 60,
-        height: 60,
-        decoration:
-        value.toString().isEmpty?
-        BoxDecoration(color: HexColor(ThemesOfProject().secondary_colors)):
-        BoxDecoration(
-            color: Colors.amberAccent.shade200,
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
-            border: Border.all(
-                color: Colors.black,
-                width: 3
-            )
+    Widget displayCard(){
+      return Card(
+        color: Colors.transparent,
+        elevation: 5,
+        shadowColor: Colors.white,
+        child: Container(
+          width: 60,
+          height: 60,
+          decoration: BoxDecoration(
+              color: Colors.amberAccent.shade200,
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              border: Border.all(
+                  color: Colors.black,
+                  width: 3
+              )
+          ),
+          child: Center(child: Text(value.toString(), style: const TextStyle(
+              fontSize: 30, fontWeight: FontWeight.w700
+          ),)),
         ),
-        child: Center(child: Text(value.toString(), style: const TextStyle(
-            fontSize: 30, fontWeight: FontWeight.w700
-        ),)),
       );
+    }
+
+    if(value.isNotEmpty){
+      return displayCard();
+    }else{
+      return const SizedBox();
+    }
   }
 }
 

@@ -99,7 +99,7 @@ class _GameStartConfoState extends State<GameStartConfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(ThemesOfProject().background),
+      backgroundColor: HexColor('#a3a2ba'),
       appBar: AppBar(
         centerTitle: true,
         title: Text('In-Mind $operation',
@@ -108,7 +108,7 @@ class _GameStartConfoState extends State<GameStartConfo> {
             fontFamily: 'Roboto',
             fontWeight: FontWeight.w800,
             fontSize: 25,
-            color: HexColor(ThemesOfProject().square_colors),
+            color: HexColor('#a3a2ba'),
           ),),
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -116,8 +116,8 @@ class _GameStartConfoState extends State<GameStartConfo> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
                 colors: [
-                  HexColor(ThemesOfProject().background),
-                  HexColor(ThemesOfProject().primary_colors),
+                  HexColor('#a3a2ba'),
+                  HexColor('#a3a2ba'),
                 ],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
@@ -139,8 +139,8 @@ class _GameStartConfoState extends State<GameStartConfo> {
                     child: beautifulLottieCard(
                       widthIs: Get.width*0.7,
                       heightIs: Get.width*0.5,
-                      cardColor: ThemesOfProject().secondary_colors,
-                      cardShadingColor: _isClicked? ThemesOfProject().background:'#6363bf',
+                      cardColor: ColorOfApp.card,
+                      cardShadingColor: _isClicked? Colors.transparent : ColorOfApp.cardShadow,
                       lottieAsset: appAssets.lottiePlayGame,),
 
                     onTapDown: (_) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathmatics_mind/shared/theme.dart';
 
 class TextStyleIs{
   TextStyle skip_and_next(BuildContext context) {
@@ -10,20 +11,20 @@ class TextStyleIs{
     );
   }
 
-  TextStyle heading(BuildContext context) {
+  TextStyle heading() {
     return const TextStyle(
         fontFamily: 'Oswald',
         fontWeight: FontWeight.w700,
         fontSize: 32,
-        color: Colors.white
+        color: ColorOfApp.textBold
     );
   }
-  TextStyle subtitle(BuildContext context) {
+  TextStyle subtitle() {
     return const TextStyle(
         fontFamily: 'Poppins',
         fontWeight: FontWeight.w400,
         fontSize: 13,
-        color: Colors.white
+        color: ColorOfApp.textLight
     );
   }
 }

@@ -231,14 +231,14 @@ class _RealGameState extends State<RealGame> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: HexColor(ThemesOfProject().background),
+        backgroundColor: HexColor('#a3a2ba'),
         // backgroundColor: HexColor('#fff'),
         body: Column(
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
-              color: HexColor(ThemesOfProject().background),
+              color: HexColor('#a3a2ba'),
               child: SafeArea(
                   child: Column(
                 children: [
@@ -263,7 +263,7 @@ class _RealGameState extends State<RealGame> {
                             border: Border.all(color: Colors.black, width: 3),
                             boxShadow: [
                               BoxShadow(
-                                color: HexColor(ThemesOfProject().card_shadow),
+                                color: HexColor('#a3a2ba'),
                                 blurStyle: BlurStyle.outer,
                                 spreadRadius: 1,
                                 blurRadius: 20,
@@ -271,7 +271,7 @@ class _RealGameState extends State<RealGame> {
                             ],
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(20.0)),
-                            color: HexColor(ThemesOfProject().secondary_colors),
+                            color: HexColor('#a3a2ba'),
                           ),
                           child: Center(
                               child: Text(
@@ -296,7 +296,7 @@ class _RealGameState extends State<RealGame> {
                             border: Border.all(color: Colors.black, width: 3),
                             boxShadow: [
                               BoxShadow(
-                                color: HexColor(ThemesOfProject().card_shadow),
+                                color: HexColor('#a3a2ba'),
                                 blurStyle: BlurStyle.outer,
                                 spreadRadius: 1,
                                 blurRadius: 20,
@@ -304,7 +304,7 @@ class _RealGameState extends State<RealGame> {
                             ],
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(20.0)),
-                            color: HexColor(ThemesOfProject().secondary_colors),
+                            color: HexColor('#a3a2ba'),
                           ),
                           child: Center(
                               child: Text(
@@ -457,9 +457,9 @@ class _RealGameState extends State<RealGame> {
       width: MediaQuery.of(context).size.width,
       height: 50,
       decoration: BoxDecoration(
-          color: HexColor(ThemesOfProject().secondary_colors),
+          color: HexColor('#a3a2ba'),
           border: Border.all(
-              color: HexColor(ThemesOfProject().background), width: 1),
+              color: HexColor('#a3a2ba'), width: 1),
           borderRadius: BorderRadius.circular(10)),
       child: Center(
           child: Text(question,
@@ -478,7 +478,7 @@ class _RealGameState extends State<RealGame> {
       decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(
-              color: HexColor(ThemesOfProject().background), width: 1),
+              color: HexColor('#a3a2ba'), width: 1),
           borderRadius: BorderRadius.circular(10)),
       child: Center(
           child: Text(
@@ -495,7 +495,7 @@ class _RealGameState extends State<RealGame> {
       child: MaterialButton(
         onPressed: onPressed,
         height: 80,
-        color: HexColor(ThemesOfProject().secondary_colors),
+        color: HexColor('#a3a2ba'),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(topLeft.toDouble()),
@@ -503,7 +503,7 @@ class _RealGameState extends State<RealGame> {
             bottomLeft: Radius.circular(bottomLeft.toDouble()),
             bottomRight: Radius.circular(bottomRight.toDouble()),
           ),
-          side: BorderSide(color: HexColor(ThemesOfProject().background)),
+          side: BorderSide(color: HexColor('#a3a2ba')),
         ),
         child: Center(
             child: Text(
@@ -524,7 +524,7 @@ class _RealGameState extends State<RealGame> {
     return Expanded(
       child: Container(
         height: 80,
-        color: HexColor(ThemesOfProject().background),
+        color: HexColor('#a3a2ba'),
       ),
     );
   }
@@ -541,7 +541,7 @@ class _RealGameState extends State<RealGame> {
       child: MaterialButton(
         onPressed: onPressed,
         height: 80,
-        color: HexColor(ThemesOfProject().secondary_colors),
+        color: HexColor('#a3a2ba'),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(topLeft.toDouble()),
@@ -549,7 +549,7 @@ class _RealGameState extends State<RealGame> {
             bottomLeft: Radius.circular(bottomLeft.toDouble()),
             bottomRight: Radius.circular(bottomRight.toDouble()),
           ),
-          side: BorderSide(color: HexColor(ThemesOfProject().background)),
+          side: BorderSide(color: HexColor('#a3a2ba')),
         ),
         child: const Center(
             child: Icon(

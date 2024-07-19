@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:mathmatics_mind/Data/app_strings.dart';
+import 'package:mathmatics_mind/shared/background.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:get/get.dart';
 import '../../Data/app_assets.dart';
 import '../../shared/theme.dart';
-import '../global_nav_bar/home_screen/intro_screen.dart';
+import '../global_nav_bar/global_nav_bar.dart';
 import 'onboard_display_page.dart';
 
 class OnboardLogic extends StatefulWidget {
@@ -28,11 +27,11 @@ class _OnboardLogicState extends State<OnboardLogic> {
   @override
   Widget build(BuildContext context) {
     final controller = PageController();
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.black,
-      statusBarBrightness: Brightness.dark,
-      statusBarIconBrightness: Brightness.dark,
-    ));
+    // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    //   statusBarColor: Colors.black,
+    //   statusBarBrightness: Brightness.dark,
+    //   statusBarIconBrightness: Brightness.dark,
+    // ));
 
     List pages;
     pages = [
@@ -59,105 +58,106 @@ class _OnboardLogicState extends State<OnboardLogic> {
     ];
 
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: HexColor(ThemesOfProject().primary_colors),
+        backgroundColor: ColorOfApp.cardShadow.withOpacity(0.8),
         toolbarHeight: 15,
       ),
-      body: Stack(
-        children: [
-          SizedBox(
-            width: double.infinity,
-            height: double.infinity,
-            child: PageView(
-              onPageChanged: (int val) {
-                if (val == 0) {
-                  isLast = false;
-                  isFirst = true;
-                }
-                if (val == 3) {
-                  isLast = true;
-                  isFirst = false;
-                }
-                if (val != 3 && val != 0) {
-                  isLast = false;
-                  isFirst = false;
-                }
-                setState(() {
-                  isLast;
-                  isFirst;
-                });
-              },
-              controller: controller,
-              children: List.generate(pages.length, (index) => pages[index]),
+      body: CommonUsedWidget.background(
+        child: Stack(
+          children: [
+            SizedBox(
+              width: double.infinity,
+              height: double.infinity,
+              child: PageView(
+                onPageChanged: (int val) {
+                  if (val == 0) {
+                    isLast = false;
+                    isFirst = true;
+                  }
+                  if (val == 3) {
+                    isLast = true;
+                    isFirst = false;
+                  }
+                  if (val != 3 && val != 0) {
+                    isLast = false;
+                    isFirst = false;
+                  }
+                  setState(() {
+                    isLast;
+                    isFirst;
+                  });
+                },
+                controller: controller,
+                children: List.generate(pages.length, (index) => pages[index]),
+              ),
             ),
-          ),
-          Align(
-            alignment: const Alignment(0, 0.93),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                if (!isFirst)
-                  InkWell(
-                      onTap: () {
-                        controller.previousPage(
-                            duration: const Duration(milliseconds: 200),
-                            curve: Curves.easeIn);
-                      },
-                      child: CircleAvatar(
-                        backgroundColor: Colors.amberAccent.shade200,
-                        child: const Icon(
-                          Icons.navigate_before,
-                          color: Colors.black,
-                        ),
-                      ))
-                else
-                  CircleAvatar(
-                    backgroundColor:
-                    HexColor(ThemesOfProject().secondary_colors),
+            Align(
+              alignment: const Alignment(0, 0.93),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  if (!isFirst)
+                    InkWell(
+                        onTap: () {
+                          controller.previousPage(
+                              duration: const Duration(milliseconds: 200),
+                              curve: Curves.easeIn);
+                        },
+                        child: const CircleAvatar(
+                          backgroundColor: ColorOfApp.bottomNavCard,
+                          child: Icon(
+                            Icons.navigate_before,
+                            color: Colors.black,
+                          ),
+                        ))
+                  else
+                    const CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                    ),
+                  SmoothPageIndicator(
+                    controller: controller,
+                    count: 4,
+                    effect: const ExpandingDotsEffect(
+                        dotColor: ColorOfApp.textBold,
+                        // expansionFactor: 6,
+                        activeDotColor: ColorOfApp.backgroundBubble,
+                        dotWidth: 7,
+                        dotHeight: 7),
                   ),
-                SmoothPageIndicator(
-                  controller: controller,
-                  count: 4,
-                  effect: ScrollingDotsEffect(
-                      dotColor: Colors.white,
-                      activeDotColor: Colors.amberAccent.shade200,
-                      fixedCenter: true,
-                      dotWidth: 7,
-                      activeDotScale: 1.1,
-                      dotHeight: 7),
-                ),
-                if (!isLast)
-                  InkWell(
-                      onTap: () {
-                        controller.nextPage(
-                            duration: const Duration(milliseconds: 200),
-                            curve: Curves.easeIn);
-                      },
-                      child: CircleAvatar(
-                        backgroundColor: Colors.amberAccent.shade200,
-                        child: const Icon(
-                          Icons.navigate_next,
-                          color: Colors.black,
-                        ),
-                      ))
-                else
-                  InkWell(
-                      onTap: () {
-                        Get.off(const IntroScreen(),
-                            transition: Transition.zoom,
-                            duration: const Duration(milliseconds: 450));
-                      },
-                      child: CircleAvatar(
-                        backgroundColor: Colors.amberAccent.shade200,
-                        child: const Icon(
-                          Icons.navigate_next,
-                          color: Colors.black,
-                        ),
-                      ))
-              ],
+                  if (!isLast)
+                    InkWell(
+                        onTap: () {
+                          controller.nextPage(
+                              duration: const Duration(milliseconds: 200),
+                              curve: Curves.easeIn);
+                        },
+                        child: const CircleAvatar(
+                          backgroundColor: ColorOfApp.bottomNavCard,
+                          child: Icon(
+                            Icons.navigate_next,
+                            color: Colors.black,
+                          ),
+                        ))
+                  else
+                    InkWell(
+                        onTap: () {
+                          Get.off(const GlobalNavBar(),
+                              transition: Transition.zoom,
+                              duration: const Duration(milliseconds: 450));
+                        },
+                        child: const CircleAvatar(
+                          backgroundColor: ColorOfApp.bottomNavCard,
+                          child: Icon(
+                            Icons.navigate_next,
+                            color: Colors.black,
+                          ),
+                        ))
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

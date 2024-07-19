@@ -29,8 +29,8 @@ class AppBarCustom extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            HexColor(ThemesOfProject().background),
-            HexColor(ThemesOfProject().primary_colors),
+            Colors.transparent,
+            ColorOfApp.cardShadow.withOpacity(0.8)
           ],
           begin: Alignment.bottomCenter,
           end: Alignment.topCenter,
@@ -46,22 +46,22 @@ class AppBarCustom extends StatelessWidget {
               Center(
                 child: Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Roboto',
                     fontWeight: FontWeight.w800,
                     fontSize: 25,
-                    color: HexColor(ThemesOfProject().square_colors),
+                    color: ColorOfApp.textBold,
                   ),
                 ),
               )
             else
               Text(
                 title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: 'Roboto',
                   fontWeight: FontWeight.w800,
                   fontSize: 25,
-                  color: HexColor(ThemesOfProject().square_colors),
+                  color: ColorOfApp.textBold,
                 ),
               ),
             if (showSettingIcon)

@@ -229,7 +229,7 @@ class _GameResultState extends State<GameResult> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor(ThemesOfProject().background),
+      backgroundColor: HexColor('#a3a2ba'),
       body: isLoading
           ? const Center(
         child: CircularProgressIndicator(),
@@ -255,10 +255,8 @@ class _GameResultState extends State<GameResult> {
                     child: beautifulLottieCard(
                       widthIs: MediaQuery.of(context).size.width * 0.8,
                       heightIs: MediaQuery.of(context).size.width * 0.5,
-                      cardColor: ThemesOfProject().secondary_colors,
-                      cardShadingColor: _isClicked
-                          ? ThemesOfProject().background
-                          : '#a3a2ba',
+                      cardColor: ColorOfApp.card,
+                      cardShadingColor: _isClicked? Colors.transparent : ColorOfApp.cardShadow,
                       lottieAsset: appAssets.lottieScoreBoard,
                     ),
                     onTapDown: (_) {
@@ -445,7 +443,7 @@ class _GameResultState extends State<GameResult> {
                               0,
                               0,
                               Colors.black,
-                              HexColor(ThemesOfProject().secondary_colors),
+                              HexColor('#a3a2ba'),
                               Colors.white,
                               'Position',
                             ),
@@ -455,7 +453,7 @@ class _GameResultState extends State<GameResult> {
                               0,
                               0,
                               Colors.black,
-                              HexColor(ThemesOfProject().secondary_colors),
+                              HexColor('#a3a2ba'),
                               Colors.white,
                               'Time',
                             ),
@@ -465,7 +463,7 @@ class _GameResultState extends State<GameResult> {
                               0,
                               0,
                               Colors.black,
-                              HexColor(ThemesOfProject().secondary_colors),
+                              HexColor('#a3a2ba'),
                               Colors.white,
                               'Average',
                             ),
