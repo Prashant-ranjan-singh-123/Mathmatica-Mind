@@ -1,6 +1,6 @@
 <div align="center">
 <br>
-<img src="https://raw.githubusercontent.com/Prashant-ranjan-singh-123/Mathmatica-Mind/main/assets/icon.png" width="200" />
+<img src="https://raw.githubusercontent.com/Prashant-ranjan-singh-123/Mathmatica-Mind/main/assts/icon.png" width="200" />
 
 </div>
 
