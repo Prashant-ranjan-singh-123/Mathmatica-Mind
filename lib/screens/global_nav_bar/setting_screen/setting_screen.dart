@@ -133,7 +133,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 50,),
+                    const SizedBox(height: 50,),
                     GestureDetector(
                       child: beautifulLottieCard(
                           widthIs: MediaQuery.of(context).size.width*0.8,

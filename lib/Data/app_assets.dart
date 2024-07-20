@@ -10,4 +10,5 @@ class AppAssets{
   final String lottieScoreBoard = 'assets/lottie/scoreboard_anim.json';
   final String lottieSetting = 'assets/lottie/setting.json';
   final String lottieTimer = 'assets/lottie/timer.json';
+  final String aiHome = 'assets/lottie/ai_home.json';
 }

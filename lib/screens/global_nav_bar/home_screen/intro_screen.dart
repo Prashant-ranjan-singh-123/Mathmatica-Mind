@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:lottie/lottie.dart';
 import 'package:mathmatics_mind/Data/app_assets.dart';
 import 'package:mathmatics_mind/screens/global_nav_bar/home_screen/game_screen_data.dart';
 import 'package:mathmatics_mind/shared/background.dart';
@@ -34,10 +35,9 @@ class _IntroScreenState extends State<IntroScreen> {
     quoteOfTheDay = Quotes().randomQuotes();
   }
 
-  void settingFun(){
+  void settingFun() {
     Get.to(const SettingsPage(),
-        curve: Curves.linear,
-        duration: const Duration(seconds: 1));
+        curve: Curves.linear, duration: const Duration(seconds: 1));
   }
 
   void additionFun() {
@@ -90,11 +90,10 @@ class _IntroScreenState extends State<IntroScreen> {
         child: Stack(
           children: [
             const AppBarCustom(
-                title: '',
-                isCenter: false,
-                showSettingIcon: false,
+              title: '',
+              isCenter: false,
+              showSettingIcon: false,
             ),
-        
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: SingleChildScrollView(
@@ -177,15 +176,16 @@ class _IntroScreenState extends State<IntroScreen> {
 
   Widget types() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 45),
+      padding: const EdgeInsets.only(right: 25, left: 25, top: 45),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const AutoSizeText(
               'Quote Of The Day',
               maxLines: 1,
+              textAlign: TextAlign.left,
               style: TextStyle(
                 fontWeight: FontWeight.w900,
                 fontSize: 25,
@@ -193,11 +193,13 @@ class _IntroScreenState extends State<IntroScreen> {
                 fontFamily: 'Oswald',
               ),
             ),
-            const SizedBox(height: 15,),
+            const SizedBox(
+              height: 15,
+            ),
             AutoSizeText(
               quoteOfTheDay,
               maxLines: 2,
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.left,
               style: const TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 15,
@@ -210,108 +212,91 @@ class _IntroScreenState extends State<IntroScreen> {
       ),
     );
   }
+
   Widget grid_view_items() {
-    Widget first_item(int index) {
-      return GestureDetector(
-        onTap: () {
-        },
-        child: Column(
-          children: [
-            Card(
-              color: ColorOfApp.card,
-              elevation: 50,
-              shadowColor: ColorOfApp.cardShadow,
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    'assets/images/feature_graphic/addition.png',
-                    fit: BoxFit.contain,
-                  )),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: AutoSizeText('Addition',
-                  maxLines: 1,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      fontSize: 20,
-                      color: ColorOfApp.textBold,
-                      fontFamily: 'Poppins')),
-            )
-          ],
+    Widget _buildImage(String imagePath) {
+      return Expanded(
+        flex: 1,
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Lottie.asset(imagePath),
         ),
       );
-    }
-
-    Widget rest_item(int index) {
-      return GestureDetector(
-        onTap: () {
-        },
-        child: Column(
-          children: [
-            Card(
-              color: ColorOfApp.textBold,
-              elevation: 50,
-              shadowColor: ColorOfApp.cardShadow,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image.asset(
-                  'assets/images/feature_graphic/addition.png',
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Center(
-                      child: AutoSizeText(
-                        'Addition',
-                        maxLines: 1,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w900,
-                          fontFamily: 'Poppins',
-                            color: ColorOfApp.textBold
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget build_grid_view(int index) {
-      if (index == 0) {
-        return first_item(index);
-      } else {
-        return rest_item(index);
-      }
     }
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.only(bottom: 20),
       child: GridView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, // number of items in each row
-          mainAxisSpacing: 10.0, // spacing between rows
-          childAspectRatio: 1 / 1,
-          crossAxisSpacing: 25.0, // spacing between columns
+          crossAxisCount: 1,
+          mainAxisSpacing: 10.0,
+          childAspectRatio: 16 / 7,
+          crossAxisSpacing: 25.0,
         ),
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        itemCount: 6,
         itemBuilder: (context, index) {
-          return build_grid_view(index);
+          final topics = [
+            {'name': 'Addition', 'image': appAsset.aiHome, 'onTap': additionFun},
+            {'name': 'Subtraction', 'image': appAsset.lottieBrain, 'onTap': subtractionFun},
+            {'name': 'Multiplication', 'image': appAsset.lottieOnboardBrain, 'onTap': multiplicationFun},
+            {'name': 'Division', 'image': appAsset.lottieOnboardMasterMath, 'onTap': divisionFun},
+            {'name': 'Square Root', 'image': appAsset.lottiePlayGame, 'onTap': squareRootFun},
+            {'name': 'Mixed', 'image': appAsset.lottieSetting, 'onTap': mixedFun},
+          ];
+
+          bool isEven = index % 2 == 0;
+
+          return GestureDetector(
+            onTap: topics[index]['onTap'] as void Function(),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Card(
+                color: ColorOfApp.card.withOpacity(0.9),
+                shadowColor: ColorOfApp.cardShadow,
+                elevation: 20,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      if (!isEven) ...[
+                        _buildImage(topics[index]['image'] as String),
+                        const SizedBox(width: 10),
+                      ],
+                      Expanded(
+                        flex: 2,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            AutoSizeText(
+                              topics[index]['name'] as String,
+                              style: TextStyle(fontSize: 24, color: ColorOfApp.textBold),
+                              maxLines: 1,
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              'Improve your ${topics[index]['name']} skills with practice',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: ColorOfApp.textLight),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            )
+                          ],
+                        ),
+                      ),
+                      if (isEven) ...[
+                        const SizedBox(width: 10),
+                        _buildImage(topics[index]['image'] as String),
+                      ],
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
         },
-        itemCount: 5+1,
-        // itemCount: 1, // Number of items you want to display
       ),
     );
   }

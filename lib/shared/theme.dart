@@ -13,6 +13,7 @@ class ColorOfApp{
   static const Color homeIconColor= Color.fromRGBO(255, 255, 255, 1.0);
   static const Color homeSkillActive= Color.fromRGBO(255, 255, 255, 1.0);
   static const Color homeSkillUnachieve= Color.fromRGBO(108, 114, 122, 1);
+  static const Color yelloShade = Color.fromRGBO(255, 198, 0,1);
 
 
   // --Carrier Screen Color--
