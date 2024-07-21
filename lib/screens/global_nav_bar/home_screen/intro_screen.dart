@@ -4,14 +4,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mathmatics_mind/Data/app_assets.dart';
 import 'package:mathmatics_mind/screens/global_nav_bar/home_screen/game_screen_data.dart';
 import 'package:mathmatics_mind/shared/background.dart';
-
 import '../../../Data/quotes.dart';
-import '../../../shared/IntroScreenWidgets.dart';
 import '../../../shared/app_bar.dart';
 import '../../../shared/theme.dart';
 import '../setting_screen/setting_screen.dart';
@@ -151,27 +148,11 @@ class _IntroScreenState extends State<IntroScreen> {
   }
 
   Widget CustomCoursalSclider() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 30),
-      child: CarouselSlider(
-        items: GameScreenData.cursol_slider_item,
-        options: CarouselOptions(
-          aspectRatio: 16 / 7,
-          viewportFraction: 1,
-          initialPage: 0,
-          enableInfiniteScroll: true,
-          reverse: false,
-          autoPlay: true,
-          autoPlayInterval: const Duration(seconds: 3),
-          autoPlayAnimationDuration: const Duration(milliseconds: 800),
-          autoPlayCurve: Curves.fastOutSlowIn,
-          enlargeCenterPage: true,
-          enlargeFactor: 0.3,
-          onPageChanged: (page, _) {},
-          scrollDirection: Axis.horizontal,
-        ),
-      ),
-    );
+    return AspectRatio(aspectRatio: 16/9,
+    child: Padding(
+      padding: const EdgeInsets.only(top: 35),
+      child: Transform.scale(scale:2, child: Lottie.asset(appAsset.lottieHelloAi)),
+    ));
   }
 
   Widget types() {
@@ -238,7 +219,7 @@ class _IntroScreenState extends State<IntroScreen> {
         itemCount: 6,
         itemBuilder: (context, index) {
           final topics = [
-            {'name': 'Addition', 'image': appAsset.aiHome, 'onTap': additionFun},
+            {'name': 'Addition', 'image': appAsset.lottieAiHome, 'onTap': additionFun},
             {'name': 'Subtraction', 'image': appAsset.lottieBrain, 'onTap': subtractionFun},
             {'name': 'Multiplication', 'image': appAsset.lottieOnboardBrain, 'onTap': multiplicationFun},
             {'name': 'Division', 'image': appAsset.lottieOnboardMasterMath, 'onTap': divisionFun},

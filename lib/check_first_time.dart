@@ -27,7 +27,7 @@ class _CheckFirstTimeState extends State<CheckFirstTime> {
       return true;
     } else {
       // await prefs.setBool('isFirst', true);
-      return false;
+      return true;
     }
   }
 

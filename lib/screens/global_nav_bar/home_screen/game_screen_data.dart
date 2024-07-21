@@ -7,22 +7,6 @@ import 'package:mathmatics_mind/screens/global_nav_bar/home_screen/game_screens/
 import '../../../shared/theme.dart';
 
 class GameScreenData{
-  static List<Widget> cursol_slider_item = [
-    GameScreenData.customCard(experience: CurserItems[0]),
-    GameScreenData.customCard(experience: CurserItems[0]),
-    GameScreenData.customCard(experience: CurserItems[0]),
-    GameScreenData.customCard(experience: CurserItems[0]),
-  ];
-
-  static Map<int, dynamic> CurserItems = {
-    0: [
-      'Addition',
-      'This app, built with care, connects you to top-notch doctors at your fingertips. Skip the waiting rooms and experience healthcare on-demand. Let Heal on Call be your pocket-sized clinic, available whenever you need it.',
-      'assets/images/doctor_on_home.png',
-      GameScreenLogic.additionFun
-    ],
-  };
-
   static Widget customCard({required List<dynamic> experience}) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),

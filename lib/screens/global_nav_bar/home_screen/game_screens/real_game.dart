@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:mathmatics_mind/shared/background.dart';
 import '../../../../Data/question_generate.dart';
 import '../../../../shared/theme.dart';
 import 'game_result_screen.dart';
@@ -231,236 +232,38 @@ class _RealGameState extends State<RealGame> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: HexColor('#a3a2ba'),
-        // backgroundColor: HexColor('#fff'),
-        body: Column(
-          children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              color: HexColor('#a3a2ba'),
-              child: SafeArea(
-                  child: Column(
-                children: [
-                  TimerWidget(time()),
-                  Question(context),
-                  const SizedBox(
-                    height: 3,
-                  ),
-                  AnswerArea(context),
-                  const Expanded(child: SizedBox()),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          // settingPageRed();
-                        },
-                        child: Container(
-                          // height: 180,
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black, width: 3),
-                            boxShadow: [
-                              BoxShadow(
-                                color: HexColor('#a3a2ba'),
-                                blurStyle: BlurStyle.outer,
-                                spreadRadius: 1,
-                                blurRadius: 20,
-                              )
-                            ],
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20.0)),
-                            color: HexColor('#a3a2ba'),
-                          ),
-                          child: Center(
-                              child: Text(
-                            'Question\n$currQusNum/$totalQusetion',
-                            style: const TextStyle(
-                                fontFamily: 'Oswald',
-                                color: Colors.white,
-                                fontWeight: FontWeight.w800,
-                                fontSize: 30),
-                            textAlign: TextAlign.center,
-                          )),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // settingPageRed();
-                        },
-                        child: Container(
-                          // height: 180,
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black, width: 3),
-                            boxShadow: [
-                              BoxShadow(
-                                color: HexColor('#a3a2ba'),
-                                blurStyle: BlurStyle.outer,
-                                spreadRadius: 1,
-                                blurRadius: 20,
-                              )
-                            ],
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20.0)),
-                            color: HexColor('#a3a2ba'),
-                          ),
-                          child: Center(
-                              child: Text(
-                            'Incorrect\n$totalIncorrect',
-                            style: const TextStyle(
-                                fontFamily: 'Oswald',
-                                color: Colors.white,
-                                fontWeight: FontWeight.w800,
-                                fontSize: 30),
-                            textAlign: TextAlign.center,
-                          )),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Expanded(child: SizedBox()),
-                  if (keyType == 1)
-                    Column(
-                      children: [
-                        Row(
-                          children: [
-                            buttonText(context, () {
-                              currentNumPress('1');
-                            }, 10, 10, 0, 0, '1'),
-                            buttonText(context, () {
-                              currentNumPress('2');
-                            }, 10, 10, 0, 0, '2'),
-                            buttonText(context, () {
-                              currentNumPress('3');
-                            }, 10, 10, 0, 0, '3'),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            buttonText(context, () {
-                              currentNumPress('4');
-                            }, 0, 0, 0, 0, '4'),
-                            buttonText(context, () {
-                              currentNumPress('5');
-                            }, 0, 0, 0, 0, '5'),
-                            buttonText(context, () {
-                              currentNumPress('6');
-                            }, 0, 0, 0, 0, '6'),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            buttonText(context, () {
-                              currentNumPress('7');
-                            }, 0, 0, 0, 0, '7'),
-                            buttonText(context, () {
-                              currentNumPress('8');
-                            }, 0, 0, 0, 0, '8'),
-                            buttonText(context, () {
-                              currentNumPress('9');
-                            }, 0, 0, 0, 0, '9'),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            emptyBox(context),
-                            buttonText(context, () {
-                              currentNumPress('0');
-                            }, 0, 0, 10, 10, '0'),
-                            buttonIcon(
-                              context,
-                              () {
-                                currentNumPress('back');
-                              },
-                              0,
-                              0,
-                              10,
-                              10,
-                            )
-                          ],
-                        ),
-                      ],
-                    )
-                  else
-                    Column(
-                      children: [
-                        Row(
-                          children: [
-                            buttonText(context, () {
-                              currentNumPress('7');
-                            }, 0, 0, 0, 0, '7'),
-                            buttonText(context, () {
-                              currentNumPress('8');
-                            }, 0, 0, 0, 0, '8'),
-                            buttonText(context, () {
-                              currentNumPress('9');
-                            }, 0, 0, 0, 0, '9'),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            buttonText(context, () {
-                              currentNumPress('4');
-                            }, 0, 0, 0, 0, '4'),
-                            buttonText(context, () {
-                              currentNumPress('5');
-                            }, 0, 0, 0, 0, '5'),
-                            buttonText(context, () {
-                              currentNumPress('6');
-                            }, 0, 0, 0, 0, '6'),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            buttonText(context, () {
-                              currentNumPress('1');
-                            }, 10, 10, 0, 0, '1'),
-                            buttonText(context, () {
-                              currentNumPress('2');
-                            }, 10, 10, 0, 0, '2'),
-                            buttonText(context, () {
-                              currentNumPress('3');
-                            }, 10, 10, 0, 0, '3'),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            emptyBox(context),
-                            buttonText(context, () {
-                              currentNumPress('0');
-                            }, 0, 0, 10, 10, '0'),
-                            buttonIcon(
-                              context,
-                              () {
-                                currentNumPress('back');
-                              },
-                              0,
-                              0,
-                              10,
-                              10,
-                            )
-                          ],
-                        ),
-                      ],
-                    )
-                ],
-              )),
-            )
-          ],
+        backgroundColor: Colors.black,
+        body: CommonUsedWidget.background(
+          child: myColmn(children: [
+            TimerWidget(time()),
+            Question(),
+            AnswerArea(),
+            fillAvailableSpace(),
+            giveInfoOfGame(),
+            fillAvailableSpace(),
+            keyPad()
+          ]),
         ));
   }
 
-  Widget Question(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: 50,
-      decoration: BoxDecoration(
-          color: HexColor('#a3a2ba'),
-          border: Border.all(
-              color: HexColor('#a3a2ba'), width: 1),
-          borderRadius: BorderRadius.circular(10)),
+  Widget myColmn({required List<Widget> children}) {
+    return Flexible(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: SafeArea(
+            child: Column(
+          children: children,
+        )),
+      ),
+    );
+  }
+
+  Widget Question() {
+    return Card(
+      color: Colors.black.withOpacity(0.3),
+      shadowColor: ColorOfApp.cardShadow,
+      elevation: 30,
       child: Center(
           child: Text(question,
               style: const TextStyle(
@@ -471,15 +274,9 @@ class _RealGameState extends State<RealGame> {
     );
   }
 
-  Widget AnswerArea(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: 50,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(
-              color: HexColor('#a3a2ba'), width: 1),
-          borderRadius: BorderRadius.circular(10)),
+  Widget AnswerArea() {
+    return Card(
+      color: Colors.white.withOpacity(0.8),
       child: Center(
           child: Text(
         answer.toString(),
@@ -495,7 +292,8 @@ class _RealGameState extends State<RealGame> {
       child: MaterialButton(
         onPressed: onPressed,
         height: 80,
-        color: HexColor('#a3a2ba'),
+        color: ColorOfApp.cardShadow.withOpacity(0.3),
+        splashColor: ColorOfApp.cardShadow.withOpacity(0.8),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(topLeft.toDouble()),
@@ -503,7 +301,8 @@ class _RealGameState extends State<RealGame> {
             bottomLeft: Radius.circular(bottomLeft.toDouble()),
             bottomRight: Radius.circular(bottomRight.toDouble()),
           ),
-          side: BorderSide(color: HexColor('#a3a2ba')),
+          side: BorderSide(
+              color: ColorOfApp.background.withOpacity(0.5), width: 2),
         ),
         child: Center(
             child: Text(
@@ -524,7 +323,7 @@ class _RealGameState extends State<RealGame> {
     return Expanded(
       child: Container(
         height: 80,
-        color: HexColor('#a3a2ba'),
+        color: Colors.transparent,
       ),
     );
   }
@@ -541,7 +340,7 @@ class _RealGameState extends State<RealGame> {
       child: MaterialButton(
         onPressed: onPressed,
         height: 80,
-        color: HexColor('#a3a2ba'),
+        color: ColorOfApp.cardShadow.withOpacity(0.3),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(topLeft.toDouble()),
@@ -549,7 +348,8 @@ class _RealGameState extends State<RealGame> {
             bottomLeft: Radius.circular(bottomLeft.toDouble()),
             bottomRight: Radius.circular(bottomRight.toDouble()),
           ),
-          side: BorderSide(color: HexColor('#a3a2ba')),
+          side: BorderSide(
+              color: ColorOfApp.background.withOpacity(0.5), width: 2),
         ),
         child: const Center(
             child: Icon(
@@ -574,5 +374,199 @@ class _RealGameState extends State<RealGame> {
         ),
       ),
     );
+  }
+
+  Widget giveInfoOfGame() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        GestureDetector(
+          onTap: () {
+            // settingPageRed();
+          },
+          child: Card(
+            color: ColorOfApp.card.withOpacity(0.5),
+            shadowColor: ColorOfApp.cardShadow,
+            elevation: 50,
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Center(
+                  child: Text(
+                'Question\n$currQusNum/$totalQusetion',
+                style: const TextStyle(
+                    fontFamily: 'Oswald',
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 30),
+                textAlign: TextAlign.center,
+              )),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {
+            // settingPageRed();
+          },
+          child: Card(
+            color: ColorOfApp.card.withOpacity(0.5),
+            shadowColor: ColorOfApp.cardShadow,
+            elevation: 50,
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Center(
+                  child: Text(
+                'Incorrect\n$totalIncorrect',
+                style: const TextStyle(
+                    fontFamily: 'Oswald',
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 30),
+                textAlign: TextAlign.center,
+              )),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget keyPad() {
+    Widget mobileKeyboard() {
+      return Column(
+        children: [
+          Row(
+            children: [
+              buttonText(context, () {
+                currentNumPress('1');
+              }, 10, 10, 0, 0, '1'),
+              buttonText(context, () {
+                currentNumPress('2');
+              }, 10, 10, 0, 0, '2'),
+              buttonText(context, () {
+                currentNumPress('3');
+              }, 10, 10, 0, 0, '3'),
+            ],
+          ),
+          Row(
+            children: [
+              buttonText(context, () {
+                currentNumPress('4');
+              }, 0, 0, 0, 0, '4'),
+              buttonText(context, () {
+                currentNumPress('5');
+              }, 0, 0, 0, 0, '5'),
+              buttonText(context, () {
+                currentNumPress('6');
+              }, 0, 0, 0, 0, '6'),
+            ],
+          ),
+          Row(
+            children: [
+              buttonText(context, () {
+                currentNumPress('7');
+              }, 0, 0, 0, 0, '7'),
+              buttonText(context, () {
+                currentNumPress('8');
+              }, 0, 0, 0, 0, '8'),
+              buttonText(context, () {
+                currentNumPress('9');
+              }, 0, 0, 0, 0, '9'),
+            ],
+          ),
+          Row(
+            children: [
+              emptyBox(context),
+              buttonText(context, () {
+                currentNumPress('0');
+              }, 0, 0, 10, 10, '0'),
+              buttonIcon(
+                context,
+                () {
+                  currentNumPress('back');
+                },
+                0,
+                0,
+                10,
+                10,
+              )
+            ],
+          ),
+        ],
+      );
+    }
+
+    Widget calculatorkeypad() {
+      return Column(
+        children: [
+          Row(
+            children: [
+              buttonText(context, () {
+                currentNumPress('7');
+              }, 0, 0, 0, 0, '7'),
+              buttonText(context, () {
+                currentNumPress('8');
+              }, 0, 0, 0, 0, '8'),
+              buttonText(context, () {
+                currentNumPress('9');
+              }, 0, 0, 0, 0, '9'),
+            ],
+          ),
+          Row(
+            children: [
+              buttonText(context, () {
+                currentNumPress('4');
+              }, 0, 0, 0, 0, '4'),
+              buttonText(context, () {
+                currentNumPress('5');
+              }, 0, 0, 0, 0, '5'),
+              buttonText(context, () {
+                currentNumPress('6');
+              }, 0, 0, 0, 0, '6'),
+            ],
+          ),
+          Row(
+            children: [
+              buttonText(context, () {
+                currentNumPress('1');
+              }, 10, 10, 0, 0, '1'),
+              buttonText(context, () {
+                currentNumPress('2');
+              }, 10, 10, 0, 0, '2'),
+              buttonText(context, () {
+                currentNumPress('3');
+              }, 10, 10, 0, 0, '3'),
+            ],
+          ),
+          Row(
+            children: [
+              emptyBox(context),
+              buttonText(context, () {
+                currentNumPress('0');
+              }, 0, 0, 10, 10, '0'),
+              buttonIcon(
+                context,
+                () {
+                  currentNumPress('back');
+                },
+                0,
+                0,
+                10,
+                10,
+              )
+            ],
+          ),
+        ],
+      );
+    }
+
+    if (keyType == 1) {
+      return mobileKeyboard();
+    } else {
+      return calculatorkeypad();
+    }
+  }
+
+  Widget fillAvailableSpace() {
+    return const Expanded(child: SizedBox());
   }
 }

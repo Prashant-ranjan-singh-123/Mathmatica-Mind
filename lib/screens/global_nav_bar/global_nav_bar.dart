@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:mathmatics_mind/screens/global_nav_bar/about_us/about_us_screen.dart';
 import 'package:mathmatics_mind/screens/global_nav_bar/home_screen/intro_screen.dart';
 import 'package:mathmatics_mind/screens/global_nav_bar/setting_screen/setting_screen.dart';
 
@@ -16,7 +17,7 @@ class GlobalNavBar extends StatefulWidget {
 }
 
 class _GlobalNavBarState extends State<GlobalNavBar> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -95,8 +96,10 @@ class _GlobalNavBarState extends State<GlobalNavBar> {
   Widget bottom_nav_bar_2_body() {
     if (_selectedIndex == 0) {
       return const IntroScreen();
-    } else {
+    } else if (_selectedIndex == 1) {
       return const SettingsPage();
+    } else {
+      return AboutUsScreen();
     }
   }
 }

@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:lottie/lottie.dart';
 import 'package:mathmatics_mind/Data/app_assets.dart';
+import 'package:mathmatics_mind/shared/background.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../shared/IntroScreenWidgets.dart';
 import '../../../../shared/app_bar.dart';
@@ -229,328 +231,302 @@ class _GameResultState extends State<GameResult> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor('#a3a2ba'),
-      body: isLoading
-          ? const Center(
-        child: CircularProgressIndicator(),
-      )
-          : Stack(
-        children: [
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 100),
-              child: Column(
-                children: [
-                  Text(
-                    '$operation',
-                    style: const TextStyle(
-                      fontFamily: 'Oswald',
-                      color: Colors.white,
-                      fontWeight: FontWeight.w800,
-                      fontSize: 40,
+      backgroundColor: Colors.black,
+      body: CommonUsedWidget.background(
+        child: isLoading
+            ? const Center(
+          child: CircularProgressIndicator(),
+        )
+            : Stack(
+          children: [
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 100),
+                child: Column(
+                  children: [
+                    Text(
+                      '$operation',
+                      style: const TextStyle(
+                        fontFamily: 'Oswald',
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                        fontSize: 40,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: Get.height * 0.05),
-                  GestureDetector(
-                    child: beautifulLottieCard(
-                      widthIs: MediaQuery.of(context).size.width * 0.8,
-                      heightIs: MediaQuery.of(context).size.width * 0.5,
-                      cardColor: ColorOfApp.card,
-                      cardShadingColor: _isClicked? Colors.transparent : ColorOfApp.cardShadow,
-                      lottieAsset: appAssets.lottieScoreBoard,
-                    ),
-                    onTapDown: (_) {
-                      setState(() {
-                        _isClicked = true;
-                      });
-                    },
-                    onTapUp: (_) {
-                      setState(() {
-                        _isClicked = false;
-                      });
-                    },
-                    onTapCancel: () {
-                      setState(() {
-                        _isClicked = false;
-                      });
-                    },
-                  ),
-                  SizedBox(height: Get.height * 0.1),
-                  const Text(
-                    'Game Details',
-                    style: TextStyle(
-                      fontFamily: 'Oswald',
-                      color: Colors.white,
-                      fontWeight: FontWeight.w800,
-                      fontSize: 40,
-                    ),
-                  ),
-                  SizedBox(height: Get.height * 0.05),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      const Expanded(child: SizedBox()),
-                      Expanded(
-                        flex: 6,
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            border:
-                            Border.all(color: Colors.black, width: 3),
-                            boxShadow: [
-                              BoxShadow(
-                                color: HexColor('#6363bf'),
-                                blurStyle: BlurStyle.outer,
-                                spreadRadius: 1,
-                                blurRadius: 20,
-                              )
-                            ],
-                            borderRadius: const BorderRadius.all(
-                                Radius.circular(5.0)),
-                            color: HexColor('#071185'),
+                    SizedBox(height: Get.height * 0.05),
+                    GestureDetector(
+                      child: AspectRatio(
+                        aspectRatio: 16/9,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Card(
+                            color: ColorOfApp.card.withOpacity(0.8),
+                            elevation: 30,
+                            shadowColor: _isClicked? Colors.transparent : ColorOfApp.cardShadow,
+                            child: Lottie.asset(appAssets.lottieScoreBoard),
                           ),
-                          child: Center(
-                              child: Text(
-                                'Total Question: $totalQusetion',
-                                style: const TextStyle(
-                                    fontFamily: 'Oswald',
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w800),
-                              )),
                         ),
                       ),
-                      const Expanded(child: SizedBox()),
-                      Expanded(
-                        flex: 6,
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            border:
-                            Border.all(color: Colors.black, width: 3),
-                            boxShadow: [
-                              BoxShadow(
-                                color: HexColor('#6363bf'),
-                                blurStyle: BlurStyle.outer,
-                                spreadRadius: 1,
-                                blurRadius: 20,
-                              )
-                            ],
-                            borderRadius: const BorderRadius.all(
-                                Radius.circular(5.0)),
-                            color: HexColor('#071185'),
-                          ),
-                          child: Center(
-                              child: Text(
-                                'Hardness: $difficultyIs',
-                                style: const TextStyle(
-                                    fontFamily: 'Oswald',
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w800),
-                              )),
-                        ),
-                      ),
-                      const Expanded(child: SizedBox()),
-                    ],
-                  ),
-                  SizedBox(height: Get.height * 0.05),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      const Expanded(child: SizedBox()),
-                      Expanded(
-                        flex: 6,
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            border:
-                            Border.all(color: Colors.black, width: 3),
-                            boxShadow: [
-                              BoxShadow(
-                                color: HexColor('#6363bf'),
-                                blurStyle: BlurStyle.outer,
-                                spreadRadius: 1,
-                                blurRadius: 20,
-                              )
-                            ],
-                            borderRadius: const BorderRadius.all(
-                                Radius.circular(5.0)),
-                            color: HexColor('#071185'),
-                          ),
-                          child: Center(
-                              child: Text(
-                                // 'isMixed: $isMixed',
-                                'Time: $Timer',
-                                style: const TextStyle(
-                                    fontFamily: 'Oswald',
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w800),
-                              )),
-                        ),
-                      ),
-                      const Expanded(child: SizedBox()),
-                      Expanded(
-                        flex: 6,
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            border:
-                            Border.all(color: Colors.black, width: 3),
-                            boxShadow: [
-                              BoxShadow(
-                                color: HexColor('#6363bf'),
-                                blurStyle: BlurStyle.outer,
-                                spreadRadius: 1,
-                                blurRadius: 20,
-                              )
-                            ],
-                            borderRadius: const BorderRadius.all(
-                                Radius.circular(5.0)),
-                            color: HexColor('#071185'),
-                          ),
-                          child: Center(
-                              child: Text(
-                                'Average: $avg_time',
-                                style: TextStyle(
-                                    fontFamily: 'Oswald',
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w800),
-                              )),
-                        ),
-                      ),
-                      const Expanded(child: SizedBox()),
-                    ],
-                  ),
-                  SizedBox(height: Get.height * 0.05),
-                  const Text(
-                    'Scores',
-                    style: TextStyle(
-                      fontFamily: 'Oswald',
-                      color: Colors.white,
-                      fontWeight: FontWeight.w800,
-                      fontSize: 40,
+                      onTapDown: (_) {
+                        setState(() {
+                          _isClicked = true;
+                        });
+                      },
+                      onTapUp: (_) {
+                        setState(() {
+                          _isClicked = false;
+                        });
+                      },
+                      onTapCancel: () {
+                        setState(() {
+                          _isClicked = false;
+                        });
+                      },
                     ),
-                  ),
-                  SizedBox(height: Get.height * 0.05),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30, right: 30),
-                    child: Column(
+                    SizedBox(height: Get.height * 0.05),
+                    const Text(
+                      'Game Details',
+                      style: TextStyle(
+                        fontFamily: 'Oswald',
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                        fontSize: 40,
+                      ),
+                    ),
+                    SizedBox(height: Get.height * 0.05),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Row(
-                          children: [
-                            containerGrid(
-                              10,
-                              0,
-                              0,
-                              0,
-                              Colors.black,
-                              HexColor('#a3a2ba'),
-                              Colors.white,
-                              'Position',
+                        const Expanded(child: SizedBox()),
+                        Expanded(
+                          flex: 6,
+                          child: Card(
+                            color: ColorOfApp.card.withOpacity(0.5),
+                            shadowColor: ColorOfApp.cardShadow,
+                            elevation: 20,
+                            child: Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Center(
+                                  child: Text(
+                                    'Total Question: $totalQusetion',
+                                    style: const TextStyle(
+                                        fontFamily: 'Oswald',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w800),
+                                  )),
                             ),
-                            containerGrid(
-                              0,
-                              0,
-                              0,
-                              0,
-                              Colors.black,
-                              HexColor('#a3a2ba'),
-                              Colors.white,
-                              'Time',
-                            ),
-                            containerGrid(
-                              0,
-                              10,
-                              0,
-                              0,
-                              Colors.black,
-                              HexColor('#a3a2ba'),
-                              Colors.white,
-                              'Average',
-                            ),
-                          ],
+                          ),
                         ),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          padding: EdgeInsets.zero,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: Scores.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Row(
-                              children: [
-                                containerGrid(
-                                  0,
-                                  0,
-                                  0,
-                                  0,
-                                  Colors.black,
-                                  Colors.white,
-                                  Colors.black,
-                                  '${index + 1}',
-                                ),
-                                containerGrid(
-                                  0,
-                                  0,
-                                  0,
-                                  0,
-                                  Colors.black,
-                                  Colors.white,
-                                  Colors.black,
-                                  timeInStandard(Scores[index]),
-                                ),
-                                containerGrid(
-                                  0,
-                                  0,
-                                  0,
-                                  0,
-                                  Colors.black,
-                                  Colors.white,
-                                  Colors.black,
-                                  '${(Scores[index] / totalQusetion).toStringAsFixed(1)} Sec',
-                                ),
-                              ],
-                            );
-                          },
+                        const Expanded(child: SizedBox()),
+                        Expanded(
+                          flex: 6,
+                          child: Card(
+                            color: ColorOfApp.card.withOpacity(0.5),
+                            shadowColor: ColorOfApp.cardShadow,
+                            elevation: 20,
+                            child: Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Center(
+                                  child: Text(
+                                    'Hardness: $difficultyIs',
+                                    style: const TextStyle(
+                                        fontFamily: 'Oswald',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w800),
+                                  )),
+                            ),
+                          ),
                         ),
-
+                        const Expanded(child: SizedBox()),
                       ],
                     ),
-
-                  ),
-
-                  SizedBox(height: Get.height * 0.1),
-                  SizedBox(
-                    width: Get.width * 0.8,
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: HexColor('#a10838'),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
+                    SizedBox(height: Get.height * 0.05),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        const Expanded(child: SizedBox()),
+                        Expanded(
+                          flex: 6,
+                          child: Card(
+                            color: ColorOfApp.card.withOpacity(0.5),
+                            shadowColor: ColorOfApp.cardShadow,
+                            elevation: 20,
+                            child: Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Center(
+                                  child: Text(
+                                    // 'isMixed: $isMixed',
+                                    'Time: $Timer',
+                                    style: const TextStyle(
+                                        fontFamily: 'Oswald',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w800),
+                                  )),
+                            ),
+                          ),
+                        ),
+                        const Expanded(child: SizedBox()),
+                        Expanded(
+                          flex: 6,
+                          child: Card(
+                            color: ColorOfApp.card.withOpacity(0.5),
+                            shadowColor: ColorOfApp.cardShadow,
+                            elevation: 20,
+                            child: Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Center(
+                                  child: Text(
+                                    'Average: $avg_time',
+                                    style: TextStyle(
+                                        fontFamily: 'Oswald',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w800),
+                                  )),
+                            ),
+                          ),
+                        ),
+                        const Expanded(child: SizedBox()),
+                      ],
+                    ),
+                    SizedBox(height: Get.height * 0.05),
+                    const Text(
+                      'Scores',
+                      style: TextStyle(
+                        fontFamily: 'Oswald',
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                        fontSize: 40,
+                      ),
+                    ),
+                    SizedBox(height: Get.height * 0.05),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30, right: 30),
+                      child: Card(
+                        color: Colors.transparent,
+                        shadowColor: ColorOfApp.cardShadow.withOpacity(0.5),
+                        elevation: 60,
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                containerGrid(
+                                  10,
+                                  0,
+                                  0,
+                                  0,
+                                  Colors.black,
+                                  ColorOfApp.cardShadow,
+                                  Colors.white,
+                                  'Position',
+                                ),
+                                containerGrid(
+                                  0,
+                                  0,
+                                  0,
+                                  0,
+                                  Colors.black,
+                                  ColorOfApp.cardShadow,
+                                  Colors.white,
+                                  'Time',
+                                ),
+                                containerGrid(
+                                  0,
+                                  10,
+                                  0,
+                                  0,
+                                  Colors.black,
+                                  ColorOfApp.cardShadow,
+                                  Colors.white,
+                                  'Average',
+                                ),
+                              ],
+                            ),
+                            ListView.builder(
+                              shrinkWrap: true,
+                              padding: EdgeInsets.zero,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: Scores.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Row(
+                                  children: [
+                                    containerGrid(
+                                      0,
+                                      0,
+                                      0,
+                                      0,
+                                      ColorOfApp.background,
+                                      ColorOfApp.cardShadow.withOpacity(0.1),
+                                      ColorOfApp.textBold,
+                                      '${index + 1}',
+                                    ),
+                                    containerGrid(
+                                      0,
+                                      0,
+                                      0,
+                                      0,
+                                      ColorOfApp.background,
+                                      ColorOfApp.cardShadow.withOpacity(0.1),
+                                      ColorOfApp.textBold,
+                                      timeInStandard(Scores[index]),
+                                    ),
+                                    containerGrid(
+                                      0,
+                                      0,
+                                      0,
+                                      0,
+                                      ColorOfApp.background,
+                                      ColorOfApp.cardShadow.withOpacity(0.1),
+                                      ColorOfApp.textBold,
+                                      '${(Scores[index] / totalQusetion).toStringAsFixed(1)} Sec',
+                                    ),
+                                  ],
+                                );
+                              },
+                            ),
+                                
+                          ],
                         ),
                       ),
-                      child: const Text(
-                        'Back',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 25,
+        
+                    ),
+        
+                    SizedBox(height: Get.height * 0.1),
+                    SizedBox(
+                      width: Get.width * 0.8,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: ColorOfApp.cardShadow,
+                          elevation: 20,
+                          shadowColor: ColorOfApp.cardShadow,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
+                        child: const Text(
+                          'Back',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: Get.height * 0.05),
-                ],
+                    SizedBox(height: Get.height * 0.05),
+                  ],
+                ),
               ),
             ),
-          ),
-          const AppBarCustom(
-            title: 'ScoreBoard',
-            isCenter: true,
-            showSettingIcon: false,
-          ),
-        ],
+            const AppBarCustom(
+              title: '',
+              isCenter: true,
+              showSettingIcon: false,
+            ),
+          ],
+        ),
       ),
     );
   }

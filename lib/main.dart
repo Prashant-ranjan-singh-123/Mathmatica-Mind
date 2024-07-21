@@ -15,13 +15,15 @@ class InitialBinding extends Bindings {
 
 void main(){
   WidgetsFlutterBinding.ensureInitialized();
-  // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-  //   statusBarColor: Color.fromRGBO(12,5,77,1),
-  //   statusBarBrightness: Brightness.light,
-  //   statusBarIconBrightness: Brightness.light,
-  // ));
   runApp(const StartApp());
 }
+
+// void main() => runApp(
+//   DevicePreview(
+//     enabled: !kReleaseMode,
+//     builder: (context) => StartApp(), // Wrap your app
+//   ),
+// );
 
 class StartApp extends StatelessWidget {
   const StartApp({super.key});
@@ -30,7 +32,6 @@ class StartApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialBinding: InitialBinding(),
-      // home: const IntroScreen(),
       home: const SplashScreen(),
       theme: ThemeData(
           textTheme: const TextTheme(

@@ -4,6 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mathmatics_mind/Data/app_assets.dart';
 import 'package:mathmatics_mind/screens/global_nav_bar/home_screen/game_screens/real_game.dart';
+import 'package:mathmatics_mind/shared/background.dart';
 
 import '../../../../shared/theme.dart';
 
@@ -60,9 +61,11 @@ class _GameStarterTimerState extends State<GameStarterTimer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor('#a3a2ba'),
-      body: Center(
-        child: Lottie.asset(appAssets.lottieTimer, repeat: false),
+      backgroundColor: Colors.black,
+      body: CommonUsedWidget.background(
+        child: Center(
+          child: Lottie.asset(appAssets.lottieTimer, repeat: false),
+        ),
       ),
     );
   }

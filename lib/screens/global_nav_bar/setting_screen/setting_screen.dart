@@ -140,7 +140,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           heightIs: MediaQuery.of(context).size.width*0.5,
                         cardColor: ColorOfApp.card,
                         cardShadingColor: _isClicked? Colors.transparent : ColorOfApp.cardShadow.withOpacity(0.4),
-                        lottieAsset: appAssets.lottieSetting,),
+                        lottieAsset: appAssets.lottieOnboardBrain,),
                         
                       onTapDown: (_) {
                         setState(() {
@@ -164,42 +164,36 @@ class _SettingsPageState extends State<SettingsPage> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width*0.8,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black, width: 3),
-                            borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-                            color: ColorOfApp.card,
-                            boxShadow: [
-                              BoxShadow(
-                                color: ColorOfApp.cardShadow.withOpacity(0.2),
-                                blurStyle: BlurStyle.outer,
-                                blurRadius: 20,
-                              )
-                            ]
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: Column(
-                              children: [
-                                const Text('Total Question', style: TextStyle(
-                                  fontFamily: 'Roboto',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white
-                                )),
-                
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    _totalQuestionRadio(10),
-                                    _totalQuestionRadio(20),
-                                    _totalQuestionRadio(30),
-                                    _totalQuestionRadio(40),
-                                    SizedBox()
-                                  ],
-                                ),
-                              ],
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          child: Card(
+                            color: ColorOfApp.card.withOpacity(0.5),
+                            shadowColor: ColorOfApp.cardShadow.withOpacity(1),
+                            elevation: 1,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  const Text('Total Question', style: TextStyle(
+                                    fontFamily: 'Roboto',
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white
+                                  )),
+
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      _totalQuestionRadio(10),
+                                      _totalQuestionRadio(20),
+                                      _totalQuestionRadio(30),
+                                      _totalQuestionRadio(40),
+                                      SizedBox()
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -211,41 +205,35 @@ class _SettingsPageState extends State<SettingsPage> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width*0.8,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black, width: 3),
-                            borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-                              color: ColorOfApp.card,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: ColorOfApp.cardShadow.withOpacity(0.2),
-                                  blurStyle: BlurStyle.outer,
-                                  blurRadius: 20,
-                                )
-                              ]
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 15),
-                            child: Column(
-                              children: [
-                                const Text('Difficulty', style: TextStyle(
-                                    fontFamily: 'Roboto',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white
-                                )),
-                
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    _difficultyRadio(1, 'Easy'),
-                                    _difficultyRadio(2, 'Medium'),
-                                    _difficultyRadio(3, 'Hard'),
-                                    const SizedBox()
-                                  ],
-                                ),
-                              ],
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          child: Card(
+                            color: ColorOfApp.card.withOpacity(0.5),
+                            shadowColor: ColorOfApp.cardShadow.withOpacity(1),
+                            elevation: 1,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 15),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  const Text('Difficulty', style: TextStyle(
+                                      fontFamily: 'Roboto',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white
+                                  )),
+
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      _difficultyRadio(1, 'Easy'),
+                                      _difficultyRadio(2, 'Medium'),
+                                      _difficultyRadio(3, 'Hard'),
+                                      const SizedBox()
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -257,45 +245,43 @@ class _SettingsPageState extends State<SettingsPage> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width*0.8,
-                          height: MediaQuery.of(context).size.width*1.1,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black, width: 3),
-                            borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-                              color: ColorOfApp.card,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: ColorOfApp.cardShadow.withOpacity(0.2),
-                                  blurStyle: BlurStyle.outer,
-                                  blurRadius: 20,
-                                )
-                              ]
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20),
-                            child: Column(
-                              children: [
-                                const Text('Keyboard Type', style: TextStyle(
-                                    fontFamily: 'Roboto',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white
-                                )),
-                
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    _keyTypeRadio(1, 'Phone'),
-                                    _keyTypeRadio(2, 'Calculator'),
-                                  ],
-                                ),
-                
-                
-                                Expanded(child: _keyBoardType())
-                
-                
-                              ],
+                        Card(
+                          color: ColorOfApp.card.withOpacity(0.5),
+                          shadowColor: ColorOfApp.cardShadow.withOpacity(1),
+                          elevation: 1,
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width*0.8,
+                            height: MediaQuery.of(context).size.width*1.1,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 20),
+                              child: Column(
+                                children: [
+                                  const Text('Keyboard Type', style: TextStyle(
+                                      fontFamily: 'Roboto',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white
+                                  )),
+                          
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 10),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        SizedBox(),
+                                        _keyTypeRadio(1, 'Phone'),
+                                        _keyTypeRadio(2, 'Calculator'),
+                                        SizedBox()
+                                      ],
+                                    ),
+                                  ),
+                          
+                          
+                                  Expanded(child: _keyBoardType())
+                          
+                          
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -320,7 +306,7 @@ class _SettingsPageState extends State<SettingsPage> {
     return Row(
       children: [
         Radio(
-          activeColor: Colors.amber,
+          activeColor: ColorOfApp.cardShadow,
           value: value,
           groupValue: _totalQusetion,
           onChanged: (int? newValue) {
@@ -339,7 +325,7 @@ class _SettingsPageState extends State<SettingsPage> {
     return Row(
       children: [
         Radio(
-          activeColor: Colors.amber,
+          activeColor: ColorOfApp.cardShadow,
           value: value,
           groupValue: _difficulty,
           onChanged: (int? newValue) {
@@ -358,7 +344,7 @@ class _SettingsPageState extends State<SettingsPage> {
     return Row(
       children: [
         Radio(
-          activeColor: Colors.amber,
+          activeColor: ColorOfApp.cardShadow,
           value: value,
           groupValue: _keyboardType,
           onChanged: (int? newValue) {
@@ -417,18 +403,18 @@ class _SettingsPageState extends State<SettingsPage> {
     Widget displayCard(){
       return Card(
         color: Colors.transparent,
-        elevation: 5,
-        shadowColor: Colors.white,
+        elevation: 10,
+        shadowColor: ColorOfApp.cardShadow,
         child: Container(
-          width: 60,
-          height: 60,
+          width: Get.width*0.15,
+          height: Get.width*0.15,
           decoration: BoxDecoration(
-              color: Colors.amberAccent.shade200,
+              color: ColorOfApp.cardShadow.withOpacity(0.5),
               borderRadius: const BorderRadius.all(Radius.circular(10)),
-              border: Border.all(
-                  color: Colors.black,
-                  width: 3
-              )
+              // border: Border.all(
+              //     color: Colors.black,
+              //     width: 3
+              // )
           ),
           child: Center(child: Text(value.toString(), style: const TextStyle(
               fontSize: 30, fontWeight: FontWeight.w700
