@@ -45,7 +45,7 @@ Mathmatica Mind is an innovative Math Game application designed to challenge and
     </td>
     <td width="50%" align="center">
       <a href="https://github.com/Prashant-ranjan-singh-123/Mathmatica-Mind/releases/download/apk-01/Mathmatica.Mind.apk">
-        <img src="https://raw.githubusercontent.com/flocke/andOTP/master/assets/badges/get-it-on-github.png" alt="Get it on GitHub" width="100%">
+        <img src="https://github.com/Prashant-ranjan-singh-123/Mathmatica-Mind/releases/download/apk-01/Mathmatica.Mind.1.2.0.apk" alt="Get it on GitHub" width="100%">
       </a>
     </td>
   </tr>
