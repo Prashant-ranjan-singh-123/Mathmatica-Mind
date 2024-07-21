@@ -27,11 +27,6 @@ class _OnboardLogicState extends State<OnboardLogic> {
   @override
   Widget build(BuildContext context) {
     final controller = PageController();
-    // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    //   statusBarColor: Colors.black,
-    //   statusBarBrightness: Brightness.dark,
-    //   statusBarIconBrightness: Brightness.dark,
-    // ));
 
     List pages;
     pages = [

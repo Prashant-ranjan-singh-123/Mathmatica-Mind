@@ -59,6 +59,32 @@ class AboutUsScreenLogic {
     }
   }
 
+  // -- To Open Github Logic --
+  static void openGithubProject() async {
+    Future<bool> isGithubInInstalled() async {
+      Uri url = Uri.parse('github://');
+      if (await canLaunchUrl(url)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    String dt = 'https://github.com/Prashant-ranjan-singh-123/Mathmatica-Mind';
+    bool isInstalled = await isGithubInInstalled();
+    if (isInstalled != false) {
+      AndroidIntent intent = AndroidIntent(action: 'action_view', data: dt);
+      await intent.launch();
+    } else {
+      Uri url = Uri.parse(dt);
+      if (await canLaunchUrl(url)) {
+        await launchUrl(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
+  }
+
   // -- To Open Telegram Logic --
   static void openTelegram() async {
     Future<bool> isTelegramInstalled() async {
@@ -85,8 +111,18 @@ class AboutUsScreenLogic {
     }
   }
 
+  static void openAppOnPlayStore() async {
+    final String playStoreUrl = 'https://play.google.com/store/apps/details?id=com.prashant.mathmatica.mind.mathmatics_mind';
+    final Uri url = Uri.parse(playStoreUrl);
+
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url, mode: LaunchMode.externalApplication);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   static Future<void> openGmail() async {
-    print(AboutUsScreenData().socialLinks[4]![1]);
     String? encodeQueryParameters(Map<String, String> params) {
       return params.entries
           .map((MapEntry<String, String> e) =>
@@ -98,7 +134,7 @@ class AboutUsScreenLogic {
       scheme: 'mailto',
       path: AboutUsScreenData().socialLinks[4]![1],
       query: encodeQueryParameters(<String, String>{
-        'subject': 'Inquiry About Your Flutter Portfolio',
+        'subject': 'Seen your Mathmatica Mind Application.',
       }),
     );
     launchUrl(emailLaunchUri);

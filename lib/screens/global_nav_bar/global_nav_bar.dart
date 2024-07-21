@@ -17,7 +17,7 @@ class GlobalNavBar extends StatefulWidget {
 }
 
 class _GlobalNavBarState extends State<GlobalNavBar> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class _GlobalNavBarState extends State<GlobalNavBar> {
   }
 
   Widget bottom_nav_bar_2() {
-    BottomNavigationBarItem _buildNavItem(IconData icon, String label) {
+    BottomNavigationBarItem buildNavItem(IconData icon, String label) {
       return BottomNavigationBarItem(
         icon: Card(
           color: Colors.transparent,
@@ -85,9 +85,9 @@ class _GlobalNavBarState extends State<GlobalNavBar> {
           });
         },
         items: [
-          _buildNavItem(Iconsax.gameboy, 'Game Play'),
-          _buildNavItem(Iconsax.setting, 'Settings'),
-          _buildNavItem(Iconsax.code, 'About Us'),
+          buildNavItem(Iconsax.gameboy, 'Game Play'),
+          buildNavItem(Iconsax.setting, 'Settings'),
+          buildNavItem(Iconsax.code, 'About Us'),
         ],
       ),
     );

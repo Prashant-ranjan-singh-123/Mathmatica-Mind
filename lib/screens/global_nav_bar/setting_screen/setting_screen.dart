@@ -1,10 +1,9 @@
 import 'dart:async';
-
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:mathmatics_mind/Data/app_assets.dart';
 import 'package:mathmatics_mind/shared/background.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -118,177 +117,35 @@ class _SettingsPageState extends State<SettingsPage> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                          child: Text(
-                            'Game Settings',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w900,
-                                fontSize: 25,
-                                color: ColorOfApp.textBold,
-                                fontFamily: 'Oswald'),
-                          ),
-                        ),
-                      ],
+                    FadeInDown(
+                      duration: const Duration(milliseconds: 700),
+                      curve: Curves.easeOutCubic,
+                      child: heading(),
                     ),
-                    const SizedBox(height: 50,),
-                    GestureDetector(
-                      child: beautifulLottieCard(
-                          widthIs: MediaQuery.of(context).size.width*0.8,
-                          heightIs: MediaQuery.of(context).size.width*0.5,
-                        cardColor: ColorOfApp.card,
-                        cardShadingColor: _isClicked? Colors.transparent : ColorOfApp.cardShadow.withOpacity(0.4),
-                        lottieAsset: appAssets.lottieOnboardBrain,),
-                        
-                      onTapDown: (_) {
-                        setState(() {
-                          _isClicked = true;
-                        });
-                      },
-                      onTapUp: (_) {
-                        setState(() {
-                          _isClicked = false;
-                        });
-                      },
-                      onTapCancel: () {
-                        setState(() {
-                          _isClicked = false;
-                        });
-                      },
+                    BounceInUp(
+                      duration: const Duration(milliseconds: 900),
+                      delay: const Duration(milliseconds: 400),
+                      curve: Curves.elasticOut,
+                      child: gameCard(),
                     ),
-                        
-                    const SizedBox(height: 50,),
-                        
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
-                          child: Card(
-                            color: ColorOfApp.card.withOpacity(0.5),
-                            shadowColor: ColorOfApp.cardShadow.withOpacity(1),
-                            elevation: 1,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  const Text('Total Question', style: TextStyle(
-                                    fontFamily: 'Roboto',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white
-                                  )),
-
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                    children: [
-                                      _totalQuestionRadio(10),
-                                      _totalQuestionRadio(20),
-                                      _totalQuestionRadio(30),
-                                      _totalQuestionRadio(40),
-                                      SizedBox()
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                    FadeInRightBig(
+                      duration: const Duration(milliseconds: 600),
+                      delay: const Duration(milliseconds: 400),
+                      curve: Curves.easeOutQuart,
+                      child: totalQues(),
                     ),
-                        
-                    const SizedBox(height: 25,),
-                        
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
-                          child: Card(
-                            color: ColorOfApp.card.withOpacity(0.5),
-                            shadowColor: ColorOfApp.cardShadow.withOpacity(1),
-                            elevation: 1,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 15),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  const Text('Difficulty', style: TextStyle(
-                                      fontFamily: 'Roboto',
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white
-                                  )),
-
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      _difficultyRadio(1, 'Easy'),
-                                      _difficultyRadio(2, 'Medium'),
-                                      _difficultyRadio(3, 'Hard'),
-                                      const SizedBox()
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                    FadeInLeft(
+                      duration: const Duration(milliseconds: 600),
+                      delay: const Duration(milliseconds: 600),
+                      curve: Curves.easeOutQuart,
+                      child: difficult(),
                     ),
-                        
-                    const SizedBox(height: 25,),
-                        
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Card(
-                          color: ColorOfApp.card.withOpacity(0.5),
-                          shadowColor: ColorOfApp.cardShadow.withOpacity(1),
-                          elevation: 1,
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width*0.8,
-                            height: MediaQuery.of(context).size.width*1.1,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 20),
-                              child: Column(
-                                children: [
-                                  const Text('Keyboard Type', style: TextStyle(
-                                      fontFamily: 'Roboto',
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white
-                                  )),
-                          
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 10),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        SizedBox(),
-                                        _keyTypeRadio(1, 'Phone'),
-                                        _keyTypeRadio(2, 'Calculator'),
-                                        SizedBox()
-                                      ],
-                                    ),
-                                  ),
-                          
-                          
-                                  Expanded(child: _keyBoardType())
-                          
-                          
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                    FadeInUp(
+                      duration: const Duration(milliseconds: 700),
+                      delay: const Duration(milliseconds: 800),
+                      curve: Curves.easeOutQuart,
+                      child: keyboard(),
                     ),
-                        
-                    const SizedBox(height: 25,),
                   ],
                 ),
               ),
@@ -302,6 +159,175 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
     );
   }
+
+  Widget heading(){
+    return const Padding(
+      padding: EdgeInsets.only(bottom: 50),
+      child: Row(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            child: Text(
+              'Game Settings',
+              style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 25,
+                  color: ColorOfApp.textBold,
+                  fontFamily: 'Oswald'),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget gameCard(){
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 30),
+      child: GestureDetector(
+        child: beautifulLottieCard(
+          widthIs: MediaQuery.of(context).size.width*0.8,
+          heightIs: MediaQuery.of(context).size.width*0.5,
+          cardColor: ColorOfApp.card,
+          cardShadingColor: _isClicked? Colors.transparent : ColorOfApp.cardShadow.withOpacity(0.4),
+          lottieAsset: appAssets.lottieOnboardBrain,),
+
+        onTapDown: (_) {
+          setState(() {
+            _isClicked = true;
+          });
+        },
+        onTapUp: (_) {
+          setState(() {
+            _isClicked = false;
+          });
+        },
+        onTapCancel: () {
+          setState(() {
+            _isClicked = false;
+          });
+        },
+      ),
+    );
+  }
+
+  Widget totalQues(){
+    return Padding(
+      padding: const EdgeInsets.only(right: 30, left: 30, bottom: 30),
+      child: Card(
+        color: ColorOfApp.card.withOpacity(0.5),
+        shadowColor: ColorOfApp.cardShadow,
+        elevation: 80,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              const Text('Total Question', style: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white
+              )),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _totalQuestionRadio(10),
+                  _totalQuestionRadio(20),
+                  _totalQuestionRadio(30),
+                  _totalQuestionRadio(40),
+                  const SizedBox()
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget difficult(){
+    return Padding(
+      padding: const EdgeInsets.only(right: 30, left: 30, bottom: 30),
+      child: Card(
+        color: ColorOfApp.card.withOpacity(0.5),
+        shadowColor: ColorOfApp.cardShadow,
+        elevation: 80,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              const Text('Difficulty', style: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white
+              )),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _difficultyRadio(1, 'Easy'),
+                  _difficultyRadio(2, 'Medium'),
+                  _difficultyRadio(3, 'Hard'),
+                  const SizedBox()
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget keyboard(){
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 30),
+      child: Card(
+        color: ColorOfApp.card.withOpacity(0.5),
+        shadowColor: ColorOfApp.cardShadow,
+        elevation: 80,
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width*0.8,
+          height: MediaQuery.of(context).size.width*1.1,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Column(
+              children: [
+                const Text('Keyboard Type', style: TextStyle(
+                    fontFamily: 'Roboto',
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white
+                )),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const SizedBox(),
+                      _keyTypeRadio(1, 'Phone'),
+                      _keyTypeRadio(2, 'Calculator'),
+                      const SizedBox()
+                    ],
+                  ),
+                ),
+
+
+                Expanded(child: _keyBoardType())
+
+
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _totalQuestionRadio(int value) {
     return Row(
       children: [

@@ -1,9 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:mathmatics_mind/screens/global_nav_bar/home_screen/game_screens/game_screen_logic.dart';
-
 import '../../../shared/theme.dart';
 
 class GameScreenData{

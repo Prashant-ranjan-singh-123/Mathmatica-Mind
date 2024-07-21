@@ -1,12 +1,10 @@
 import 'dart:core';
+import 'package:animate_do/animate_do.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mathmatics_mind/Data/app_assets.dart';
-import 'package:mathmatics_mind/screens/global_nav_bar/home_screen/game_screen_data.dart';
 import 'package:mathmatics_mind/shared/background.dart';
 import '../../../Data/quotes.dart';
 import '../../../shared/app_bar.dart';
@@ -23,7 +21,6 @@ class IntroScreen extends StatefulWidget {
 
 class _IntroScreenState extends State<IntroScreen> {
   String quoteOfTheDay = '';
-  bool _isClicked = false;
   final appAsset = Get.find<AppAssets>();
 
   @override
@@ -34,49 +31,57 @@ class _IntroScreenState extends State<IntroScreen> {
 
   void settingFun() {
     Get.to(const SettingsPage(),
-        curve: Curves.linear, duration: const Duration(seconds: 1));
+        curve: Curves.linear,
+        duration: const Duration(seconds: 1)
+    );
   }
 
   void additionFun() {
     Get.to(const GameStartConfo(),
         arguments: 'Addition',
-        curve: Curves.linear,
-        duration: const Duration(seconds: 1));
+        // curve: Curves.linear,
+        // duration: const Duration(seconds: 1)
+    );
   }
 
   void subtractionFun() {
     Get.to(const GameStartConfo(),
         arguments: 'Subtraction',
-        curve: Curves.linear,
-        duration: const Duration(seconds: 1));
+        // curve: Curves.linear,
+        // duration: const Duration(seconds: 1)
+    );
   }
 
   void multiplicationFun() {
     Get.to(const GameStartConfo(),
         arguments: 'Multiply',
-        curve: Curves.linear,
-        duration: const Duration(seconds: 1));
+        // curve: Curves.linear,
+        // duration: const Duration(seconds: 1)
+    );
   }
 
   void divisionFun() {
     Get.to(const GameStartConfo(),
         arguments: 'Division',
-        curve: Curves.linear,
-        duration: const Duration(seconds: 1));
+        // curve: Curves.linear,
+        // duration: const Duration(seconds: 1)
+    );
   }
 
   void squareRootFun() {
     Get.to(const GameStartConfo(),
         arguments: 'SquareRoot',
-        curve: Curves.linear,
-        duration: const Duration(seconds: 1));
+        // curve: Curves.linear,
+        // duration: const Duration(seconds: 1)
+    );
   }
 
   void mixedFun() {
     Get.to(const GameStartConfo(),
         arguments: 'Arithmetic',
-        curve: Curves.linear,
-        duration: const Duration(seconds: 1));
+        // curve: Curves.linear,
+        // duration: const Duration(seconds: 1)
+    );
   }
 
   @override
@@ -97,10 +102,74 @@ class _IntroScreenState extends State<IntroScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    heading_and_subtitle_top(),
-                    CustomCoursalSclider(),
-                    types(),
-                    grid_view_items(),
+                    // SlideInRight(
+                    //   duration: const Duration(milliseconds: 600),
+                    //   child: heading_and_subtitle_top(),
+                    // ),
+                    // FadeInUp(
+                    //   duration: const Duration(milliseconds: 800),
+                    //   delay: const Duration(milliseconds: 300),
+                    //   child: CustomCoursalSclider(),
+                    // ),
+                    // ElasticInLeft(
+                    //   duration: const Duration(milliseconds: 1000),
+                    //   delay: const Duration(milliseconds: 600),
+                    //   child: types(),
+                    // ),
+                    // ZoomIn(
+                    //   duration: const Duration(milliseconds: 800),
+                    //   delay: const Duration(milliseconds: 900),
+                    //   child: grid_view_items(),
+                    // ),
+
+
+                    // FadeInDown(
+                    //   duration: const Duration(milliseconds: 700),
+                    //   curve: Curves.easeOutCubic,
+                    //   child: heading_and_subtitle_top(),
+                    // ),
+                    // BounceInUp(
+                    //   duration: const Duration(milliseconds: 900),
+                    //   delay: const Duration(milliseconds: 400),
+                    //   curve: Curves.elasticOut,
+                    //   child: CustomCoursalSclider(),
+                    // ),
+                    // FlipInX(
+                    //   duration: const Duration(milliseconds: 800),
+                    //   delay: const Duration(milliseconds: 700),
+                    //   curve: Curves.decelerate,
+                    //   child: types(),
+                    // ),
+                    // ElasticInRight(
+                    //   duration: const Duration(milliseconds: 1500),
+                    //   delay: const Duration(milliseconds: 1000),
+                    //   curve: Curves.easeOutExpo,
+                    //   child: grid_view_items(),
+                    // ),
+
+                    FadeInDown(
+                      duration: const Duration(milliseconds: 700),
+                      curve: Curves.easeOutCubic,
+                      child: heading_and_subtitle_top(),
+                    ),
+                    BounceInUp(
+                      duration: const Duration(milliseconds: 900),
+                      delay: const Duration(milliseconds: 400),
+                      curve: Curves.elasticOut,
+                      child: CustomCoursalSclider(),
+                    ),
+                    FadeInLeft(
+                      duration: const Duration(milliseconds: 700),
+                      delay: const Duration(milliseconds: 600),
+                      curve: Curves.decelerate,
+                      child: types(),
+                    ),
+                    FadeInRightBig(
+                      duration: const Duration(milliseconds: 900),
+                      delay: const Duration(milliseconds: 1000),
+                      curve: Curves.easeOutQuint,
+                      child: grid_view_items(),
+                    ),
                     // ... Other widgets
                   ],
                 ),
@@ -148,11 +217,13 @@ class _IntroScreenState extends State<IntroScreen> {
   }
 
   Widget CustomCoursalSclider() {
-    return AspectRatio(aspectRatio: 16/9,
-    child: Padding(
-      padding: const EdgeInsets.only(top: 35),
-      child: Transform.scale(scale:2, child: Lottie.asset(appAsset.lottieHelloAi)),
-    ));
+    return AspectRatio(
+        aspectRatio: 16 / 9,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 35),
+          child: Transform.scale(
+              scale: 2, child: Lottie.asset(appAsset.lottieHelloAi)),
+        ));
   }
 
   Widget types() {
@@ -195,7 +266,7 @@ class _IntroScreenState extends State<IntroScreen> {
   }
 
   Widget grid_view_items() {
-    Widget _buildImage(String imagePath) {
+    Widget buildImage(String imagePath) {
       return Expanded(
         flex: 1,
         child: Padding(
@@ -215,16 +286,40 @@ class _IntroScreenState extends State<IntroScreen> {
           crossAxisSpacing: 25.0,
         ),
         shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         itemCount: 6,
         itemBuilder: (context, index) {
           final topics = [
-            {'name': 'Addition', 'image': appAsset.lottieAiHome, 'onTap': additionFun},
-            {'name': 'Subtraction', 'image': appAsset.lottieBrain, 'onTap': subtractionFun},
-            {'name': 'Multiplication', 'image': appAsset.lottieOnboardBrain, 'onTap': multiplicationFun},
-            {'name': 'Division', 'image': appAsset.lottieOnboardMasterMath, 'onTap': divisionFun},
-            {'name': 'Square Root', 'image': appAsset.lottiePlayGame, 'onTap': squareRootFun},
-            {'name': 'Mixed', 'image': appAsset.lottieSetting, 'onTap': mixedFun},
+            {
+              'name': 'Addition',
+              'image': appAsset.lottieAiHome,
+              'onTap': additionFun
+            },
+            {
+              'name': 'Subtraction',
+              'image': appAsset.lottieBrain,
+              'onTap': subtractionFun
+            },
+            {
+              'name': 'Multiplication',
+              'image': appAsset.lottieOnboardBrain,
+              'onTap': multiplicationFun
+            },
+            {
+              'name': 'Division',
+              'image': appAsset.lottieOnboardMasterMath,
+              'onTap': divisionFun
+            },
+            {
+              'name': 'Square Root',
+              'image': appAsset.lottiePlayGame,
+              'onTap': squareRootFun
+            },
+            {
+              'name': 'Mixed',
+              'image': appAsset.lottieSetting,
+              'onTap': mixedFun
+            },
           ];
 
           bool isEven = index % 2 == 0;
@@ -242,7 +337,7 @@ class _IntroScreenState extends State<IntroScreen> {
                   child: Row(
                     children: [
                       if (!isEven) ...[
-                        _buildImage(topics[index]['image'] as String),
+                        buildImage(topics[index]['image'] as String),
                         const SizedBox(width: 10),
                       ],
                       Expanded(
@@ -253,14 +348,16 @@ class _IntroScreenState extends State<IntroScreen> {
                           children: [
                             AutoSizeText(
                               topics[index]['name'] as String,
-                              style: TextStyle(fontSize: 24, color: ColorOfApp.textBold),
+                              style: const TextStyle(
+                                  fontSize: 24, color: ColorOfApp.textBold),
                               maxLines: 1,
                             ),
                             const SizedBox(height: 5),
                             Text(
                               'Improve your ${topics[index]['name']} skills with practice',
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: ColorOfApp.textLight),
+                              style:
+                                  const TextStyle(color: ColorOfApp.textLight),
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             )
@@ -269,7 +366,7 @@ class _IntroScreenState extends State<IntroScreen> {
                       ),
                       if (isEven) ...[
                         const SizedBox(width: 10),
-                        _buildImage(topics[index]['image'] as String),
+                        buildImage(topics[index]['image'] as String),
                       ],
                     ],
                   ),

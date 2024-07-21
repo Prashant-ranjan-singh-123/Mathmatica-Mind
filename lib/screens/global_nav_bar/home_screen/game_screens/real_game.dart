@@ -232,32 +232,32 @@ class _RealGameState extends State<RealGame> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
-        body: CommonUsedWidget.background(
-          child: myColmn(children: [
+      backgroundColor: Colors.black,
+      body: CommonUsedWidget.background(
+        child: Column(
+          children: [
             TimerWidget(time()),
             Question(),
             AnswerArea(),
             fillAvailableSpace(),
             giveInfoOfGame(),
             fillAvailableSpace(),
-            keyPad()
-          ]),
-        ));
-  }
-
-  Widget myColmn({required List<Widget> children}) {
-    return Flexible(
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: SafeArea(
-            child: Column(
-          children: children,
-        )),
+            keyPad(),
+          ],
+        ),
       ),
     );
   }
+
+
+  Widget myColumn({required List<Widget> children}) {
+    return Expanded(
+      child: Column(
+        children: children,
+      ),
+    );
+  }
+
 
   Widget Question() {
     return Card(

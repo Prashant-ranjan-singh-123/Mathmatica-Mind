@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hexcolor/hexcolor.dart';
 import '../screens/global_nav_bar/setting_screen/setting_screen.dart';
 import 'theme.dart';
 

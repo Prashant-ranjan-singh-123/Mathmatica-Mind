@@ -1,12 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:mathmatics_mind/Data/app_assets.dart';
-import 'package:mathmatics_mind/Data/app_strings.dart';
+import '../../../Data/app_assets.dart';
+import '../../../Data/app_strings.dart';
 import '../../../shared/background.dart';
 import '../../../shared/global_var_and_fun.dart';
 import '../../../shared/theme.dart';
@@ -37,28 +35,59 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
       backgroundColor: Colors.black,
       body: CommonUsedWidget.background(
         child: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  FadeInDown(child: topImageWidget()),
-                  JelloIn(delay: const Duration(milliseconds: 200), child: nameOdDev()),
-                  ZoomIn(delay: const Duration(milliseconds: 600), child: socialMedia()),
-                  SlideInUp(delay: const Duration(milliseconds: 800), child: aboutText()),
-                  SlideInUp(delay: const Duration(milliseconds: 1400), child: socialProfileSelf())
-                  // experience()
-                ],
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FadeInDown(
+                      duration: const Duration(milliseconds: 700),
+                      curve: Curves.easeOutCubic,
+                      child: headingAndSubtitleTop(),
+                    ),
+                    FadeIn(
+                      duration: const Duration(milliseconds: 800),
+                      delay: const Duration(milliseconds: 200),
+                      curve: Curves.easeIn,
+                      child: topImageWidget(),
+                    ),
+                    FadeInRightBig(
+                      duration: const Duration(milliseconds: 600),
+                      delay: const Duration(milliseconds: 400),
+                      curve: Curves.easeOutQuart,
+                      child: socialMedia(),
+                    ),
+                    FadeInLeft(
+                      duration: const Duration(milliseconds: 600),
+                      delay: const Duration(milliseconds: 600),
+                      curve: Curves.easeOutQuart,
+                      child: mitLicence(),
+                    ),
+                    FadeInRight(
+                      duration: const Duration(milliseconds: 600),
+                      delay: const Duration(milliseconds: 600),
+                      curve: Curves.easeOutQuart,
+                      child: aboutText(),
+                    ),
+                    FadeInDown(
+                      duration: const Duration(milliseconds: 600),
+                      delay: const Duration(milliseconds: 600),
+                      curve: Curves.easeOutQuart,
+                      child: socialProfileSelf(),
+                    ),
+                    // experience()
+                  ],
+                ),
               ),
             ),
           ),
-        ),
       ),
+
     );
   }
 
-  Widget padding_between_element({required Widget child}) {
+  Widget paddingBetweenElement({required Widget child}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: child,
@@ -101,14 +130,14 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
   }
 
   Widget topImageWidget() {
-    return padding_between_element(
+    return paddingBetweenElement(
       child: Center(
         child: isHeightBigger()
             ? Card(
               color: Colors.transparent,
               shadowColor: ColorOfApp.cardShadow,
               elevation: 40,
-              child: FittedBox(fit: BoxFit.cover, child: Image.asset(appAsset.featureGraphic,)),
+              child: Image.asset(appAsset.featureGraphic,),
             )
             : Card(
             color: Colors.transparent,
@@ -120,7 +149,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
   }
 
   Widget nameOdDev() {
-    return padding_between_element(
+    return paddingBetweenElement(
       child: isHeightBigger()
           ? Center(
               child: AutoSizeText(
@@ -169,13 +198,36 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
           );
   }
 
+  Widget mitLicence() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 20),
+      child: Card(
+        color: ColorOfApp.card.withOpacity(0.5),
+        shadowColor: ColorOfApp.cardShadow,
+        elevation: 100,
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            children: [
+              heading(heading: 'MIT License', paddingTop: 0, paddingBottom: 20),
+              const Text(
+                AboutUsScreenData.mitLicense,
+                style: TextStyle(color: ColorOfApp.textLight),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget aboutText() {
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Card(
-        color: ColorOfApp.card,
+        color: ColorOfApp.card.withOpacity(0.5),
         shadowColor: ColorOfApp.cardShadow,
-        elevation: 30,
+        elevation: 100,
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
@@ -193,38 +245,8 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
   }
 
   Widget socialMedia() {
-    // --Buttons Logic--
-    Widget AppButton(
-        {required String Assetname,
-        required Function fun,
-        String iconData = ''}) {
-      return Center(
-        child: Row(
-          children: [
-            Card(
-              color: ColorOfApp.card,
-              elevation: 5,
-              shadowColor: ColorOfApp.cardShadow,
-              child: SizedBox(
-                width: Get.width * 0.13,
-                height: Get.width * 0.13,
-                child: IconButton(
-                  onPressed: () {
-                    fun();
-                  },
-                  icon: Image.asset(Assetname),
-                ),
-              ),
-            ),
-            SizedBox(
-              width: Get.width * 0.03,
-            )
-          ],
-        ),
-      );
-    }
 
-    Widget AppButtonIcon({required IconData Iconname, required Function fun}) {
+    Widget appButtonIcon({required IconData iconName, required Function fun}) {
       return Center(
         child: Row(
           children: [
@@ -234,7 +256,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
               shadowColor: ColorOfApp.cardShadow,
               child: SizedBox(
                 width: Get.width * 0.25,
-                height: Get.width * 0.13,
+                height: Get.width * 0.15,
                 child: IconButton(
                   onPressed: () {
                     fun();
@@ -242,7 +264,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                   icon: Transform.scale(
                       scale: 1.7,
                       child: Icon(
-                        Iconname,
+                        iconName,
                         color: ColorOfApp.homeIconColor,
                       )),
                 ),
@@ -256,23 +278,23 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
       );
     }
 
-    return padding_between_element(
+    return paddingBetweenElement(
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         physics: const AlwaysScrollableScrollPhysics(),
         child: Row(
           children: [
-            AppButtonIcon(
-              Iconname: MdiIcons.linkedin,
+            appButtonIcon(
+              iconName: MdiIcons.googlePlay,
+              fun: AboutUsScreenLogic.openAppOnPlayStore,
+            ),
+            appButtonIcon(
+              iconName: MdiIcons.github,
+              fun: AboutUsScreenLogic.openGithubProject,
+            ),
+            appButtonIcon(
+              iconName: MdiIcons.linkedin,
               fun: AboutUsScreenLogic.openLinkedin,
-            ),
-            AppButtonIcon(
-              Iconname: MdiIcons.github,
-              fun: AboutUsScreenLogic.openGithub,
-            ),
-            AppButtonIcon(
-              Iconname: MdiIcons.googlePlay,
-              fun: AboutUsScreenLogic.openGmail,
             ),
           ],
         ),
@@ -337,6 +359,41 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
             )),
         const SizedBox(
           height: 40,
+        )
+      ],
+    );
+  }
+
+  Widget headingAndSubtitleTop() {
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        SizedBox(
+          height: 20,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 0),
+          child: Text(
+            'Mathmatica Mind',
+            style: TextStyle(
+                fontWeight: FontWeight.w900,
+                fontSize: 25,
+                color: ColorOfApp.textBold,
+                fontFamily: 'Oswald'),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 0),
+          child: Text(
+            'Mathematical Skills',
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 15,
+              fontFamily: 'OpenSans',
+              color: ColorOfApp.textLight,
+            ),
+          ),
         )
       ],
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mathmatics_mind/screens/splash_screen/splash_screen.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'Data/app_assets.dart';
 import 'Data/app_strings.dart';
 
@@ -14,16 +14,10 @@ class InitialBinding extends Bindings {
 }
 
 void main(){
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(const StartApp());
 }
-
-// void main() => runApp(
-//   DevicePreview(
-//     enabled: !kReleaseMode,
-//     builder: (context) => StartApp(), // Wrap your app
-//   ),
-// );
 
 class StartApp extends StatelessWidget {
   const StartApp({super.key});

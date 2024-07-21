@@ -1,0 +1,48 @@
+flutter_native_splash:
+  color: "#040014"  # This is the RGB equivalent of Color.fromRGBO(4, 0, 20, 1)
+  image: assets/images/icon.png
+
+  android_12:
+    color: "#040014"
+    image: assets/images/icon.png
+
+  # The following parameters remain unchanged from the original configuration
+  # You can uncomment and modify them as needed
+
+  #branding: assets/dart.png
+  #branding_mode: bottom
+  #branding_bottom_padding: 24
+
+  #color_dark: "#04001400"
+  #image_dark: assets/images/icon.png
+
+  #android_gravity: center
+  #ios_content_mode: center
+  #web_image_mode: center
+
+  #fullscreen: true
+
+  # The following platform-specific parameters can be uncommented and customized if needed
+  #android: false
+  #ios: false
+  #web: false
+
+  #color_android: "#04001400"
+  #color_dark_android: "#04001400"
+  #color_ios: "#04001400"
+  #color_dark_ios: "#04001400"
+  #color_web: "#04001400"
+  #color_dark_web: "#04001400"
+
+  #image_android: assets/images/icon.png
+  #image_dark_android: assets/images/icon.png
+  #image_ios: assets/images/icon.png
+  #image_dark_ios: assets/images/icon.png
+  #image_web: assets/images/icon.png
+  #image_dark_web: assets/images/icon.png
+
+  #android_screen_orientation: sensorLandscape
+
+  #info_plist_files:
+  #  - 'ios/Runner/Info-Debug.plist'
+  #  - 'ios/Runner/Info-Release.plist'

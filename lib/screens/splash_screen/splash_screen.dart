@@ -1,15 +1,13 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mathmatics_mind/Data/app_strings.dart';
 import 'package:mathmatics_mind/shared/background.dart';
-import 'package:mathmatics_mind/shared/theme.dart';
 import '../../Data/app_assets.dart';
 import '../../check_first_time.dart';
 import '../../shared/global_var_and_fun.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -21,6 +19,13 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   final appAssets = Get.find<AppAssets>();
   final appString = Get.find<AppStrings>();
+
+  @override
+  void initState() {
+    super.initState();
+    FlutterNativeSplash.remove();
+  }
+
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(milliseconds: 3500), (){
@@ -30,7 +35,6 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Colors.black,
       body: CommonUsedWidget.background(
         child: myCustomColumn(children: [
-          // Lottie.asset(appAssets.lottieHelloAi),
           Lottie.asset(appAssets.lottieHello, repeat: false)
         ]),
       ),

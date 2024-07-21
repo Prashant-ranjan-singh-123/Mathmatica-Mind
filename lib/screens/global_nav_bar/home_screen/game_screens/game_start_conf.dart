@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -123,16 +124,41 @@ class _GameStartConfoState extends State<GameStartConfo> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _buildGameType(),
-                  // SizedBox(),
-                  const SizedBox(),
-                  // const SizedBox(height: 20),
-                  _buildLottieCard(),
-                  // const SizedBox(height: 20),
-                  _buildGameStartInfo(),
-                  // const SizedBox(height: 20),
-                  _buildStartGameButton(),
-                  const SizedBox(height: 20),
+                  FadeInDown(
+                    duration: const Duration(milliseconds: 700),
+                    curve: Curves.easeOutCubic,
+                    child: _buildGameType(),
+                  ),
+                  BounceInUp(
+                    duration: const Duration(milliseconds: 900),
+                    delay: const Duration(milliseconds: 400),
+                    curve: Curves.elasticOut,
+                    child: const SizedBox(),
+                  ),
+                  BounceInUp(
+                    duration: const Duration(milliseconds: 900),
+                    delay: const Duration(milliseconds: 400),
+                    curve: Curves.elasticOut,
+                    child: _buildLottieCard(),
+                  ),
+                  FadeInRightBig(
+                    duration: const Duration(milliseconds: 600),
+                    delay: const Duration(milliseconds: 400),
+                    curve: Curves.easeOutQuart,
+                    child: _buildGameStartInfo(),
+                  ),
+                  FadeInLeft(
+                    duration: const Duration(milliseconds: 600),
+                    delay: const Duration(milliseconds: 600),
+                    curve: Curves.easeOutQuart,
+                    child: _buildStartGameButton(),
+                  ),
+                  FadeInUp(
+                    duration: const Duration(milliseconds: 700),
+                    delay: const Duration(milliseconds: 800),
+                    curve: Curves.easeOutQuart,
+                    child: const SizedBox(height: 20),
+                  ),
                 ],
               ),
             ),
@@ -174,11 +200,11 @@ class _GameStartConfoState extends State<GameStartConfo> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Expanded(child: const SizedBox()),
+        const Expanded(child: SizedBox()),
         _buildInfoContainer('Total Question: $totalQusetion'),
-        Expanded(child: const SizedBox()),
+        const Expanded(child: SizedBox()),
         _buildInfoContainer('Difficulty: $difficultyIs'),
-        Expanded(child: const SizedBox())
+        const Expanded(child: SizedBox())
       ],
     );
   }

@@ -1,13 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/routes/default_transitions.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mathmatics_mind/screens/on_boarding/style_on_boarding_page.dart';
 import 'package:mathmatics_mind/shared/background.dart';
@@ -58,8 +52,7 @@ class OnboardDisplayPage extends StatelessWidget {
           width: Get.width * 0.95,
           height: Get.height * 0.63,
           child: ElasticIn(
-            // curve: Curves.decelerate,
-            duration: Duration(seconds: 1),
+            duration: const Duration(seconds: 1),
             child: Lottie.asset(lottie,
                 reverse: true),
           ),
@@ -72,7 +65,7 @@ class OnboardDisplayPage extends StatelessWidget {
   }
 
   Widget displayText(){
-    Widget _buildDragHandle() {
+    Widget buildDragHandle() {
       return Padding(
         padding: const EdgeInsets.only(bottom: 20),
         child: Center(
@@ -112,7 +105,7 @@ class OnboardDisplayPage extends StatelessWidget {
               const EdgeInsets.only(top: 10, right: 20, left: 20),
               child: Column(
                 children: [
-                  _buildDragHandle(),
+                  buildDragHandle(),
                   FadeInLeft(
                     delay: const Duration(milliseconds: 1000),
                     duration: const Duration(milliseconds: 800),
