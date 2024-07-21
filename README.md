@@ -6,7 +6,7 @@
   
 </div>
 
-# Mathmatica Mind
+<h1 align="center">Mathmatica Mind</h1>
 
 <p align="center">
   <img alt="Mathmatica-Mind" src="https://img.shields.io/badge/Mathmatica%20Mind-00d1a7?style=for-the-badge&logo=flutter&logoColor=white"/>
