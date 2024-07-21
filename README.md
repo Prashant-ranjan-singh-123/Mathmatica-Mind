@@ -74,12 +74,12 @@ Mathmatica Mind is an innovative Math Game application designed to challenge and
 <summary>Click to expand</summary>
 <table>
   <tr>
-    <td><img src="https://raw.githubusercontent.com/Prashant-ranjan-singh-123/Mathmatica-Mind/main/readme_image/image_0.png" width="499dp"></td>
-    <td><img src="https://raw.githubusercontent.com/Prashant-ranjan-singh-123/Mathmatica-Mind/main/readme_image/image_1.png" width="499dp"></td>
+    <td><img src="https://raw.githubusercontent.com/Prashant-ranjan-singh-123/Mathmatica-Mind/main/readme_image/1.png" width="499dp"></td>
+    <td><img src="https://raw.githubusercontent.com/Prashant-ranjan-singh-123/Mathmatica-Mind/main/readme_image/2.png" width="499dp"></td>
   </tr>
   <tr>
-    <td><img src="https://raw.githubusercontent.com/Prashant-ranjan-singh-123/Mathmatica-Mind/main/readme_image/image_2.png" width="499dp"></td>
-    <td><img src="https://raw.githubusercontent.com/Prashant-ranjan-singh-123/Mathmatica-Mind/main/readme_image/image_3.png" width="499dp"></td>
+    <td><img src="https://raw.githubusercontent.com/Prashant-ranjan-singh-123/Mathmatica-Mind/main/readme_image/4.png" width="499dp"></td>
+    <td><img src="https://raw.githubusercontent.com/Prashant-ranjan-singh-123/Mathmatica-Mind/main/readme_image/5.png" width="499dp"></td>
   </tr>
 </table>
 </details>
