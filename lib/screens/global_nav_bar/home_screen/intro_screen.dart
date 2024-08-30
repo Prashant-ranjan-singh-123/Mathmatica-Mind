@@ -167,7 +167,7 @@ class _IntroScreenState extends State<IntroScreen> {
                     FadeInRightBig(
                       duration: const Duration(milliseconds: 900),
                       delay: const Duration(milliseconds: 1000),
-                      curve: Curves.easeOutQuint,
+                      curve: Curves.bounceOut,
                       child: grid_view_items(),
                     ),
                     // ... Other widgets
@@ -331,7 +331,7 @@ class _IntroScreenState extends State<IntroScreen> {
               child: Card(
                 color: ColorOfApp.card.withOpacity(0.9),
                 shadowColor: ColorOfApp.cardShadow,
-                elevation: 20,
+                elevation: 10,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
