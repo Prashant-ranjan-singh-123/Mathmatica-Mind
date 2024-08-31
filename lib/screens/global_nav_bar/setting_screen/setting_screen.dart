@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../shared/IntroScreenWidgets.dart';
 import '../../../shared/app_bar.dart';
 import '../../../shared/theme.dart';
+import '../global_nav_bar.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -108,53 +109,63 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: CommonUsedWidget.background(
-        child: Stack(
-          children: [
-            SafeArea(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    FadeInDown(
-                      duration: const Duration(milliseconds: 700),
-                      curve: Curves.easeOutCubic,
-                      child: heading(),
-                    ),
-                    BounceInUp(
-                      duration: const Duration(milliseconds: 900),
-                      delay: const Duration(milliseconds: 400),
-                      curve: Curves.elasticOut,
-                      child: gameCard(),
-                    ),
-                    FadeInRightBig(
-                      duration: const Duration(milliseconds: 600),
-                      delay: const Duration(milliseconds: 400),
-                      curve: Curves.easeOutQuart,
-                      child: totalQues(),
-                    ),
-                    FadeInLeft(
-                      duration: const Duration(milliseconds: 600),
-                      delay: const Duration(milliseconds: 600),
-                      curve: Curves.easeOutQuart,
-                      child: difficult(),
-                    ),
-                    FadeInUp(
-                      duration: const Duration(milliseconds: 700),
-                      delay: const Duration(milliseconds: 800),
-                      curve: Curves.easeOutQuart,
-                      child: keyboard(),
-                    ),
-                  ],
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const GlobalNavBar()),
+              (Route<dynamic> route) => false, // Remove all previous routes
+        );
+        return false;
+      },
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: CommonUsedWidget.background(
+          child: Stack(
+            children: [
+              SafeArea(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      FadeInDown(
+                        duration: const Duration(milliseconds: 700),
+                        curve: Curves.easeOutCubic,
+                        child: heading(),
+                      ),
+                      BounceInUp(
+                        duration: const Duration(milliseconds: 900),
+                        delay: const Duration(milliseconds: 400),
+                        curve: Curves.elasticOut,
+                        child: gameCard(),
+                      ),
+                      FadeInRightBig(
+                        duration: const Duration(milliseconds: 600),
+                        delay: const Duration(milliseconds: 400),
+                        curve: Curves.easeOutQuart,
+                        child: totalQues(),
+                      ),
+                      FadeInLeft(
+                        duration: const Duration(milliseconds: 600),
+                        delay: const Duration(milliseconds: 600),
+                        curve: Curves.easeOutQuart,
+                        child: difficult(),
+                      ),
+                      FadeInUp(
+                        duration: const Duration(milliseconds: 700),
+                        delay: const Duration(milliseconds: 800),
+                        curve: Curves.easeOutQuart,
+                        child: keyboard(),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-        
-            const AppBarCustom(title: '',
-                isCenter: true,
-                showSettingIcon: false),
-          ],
+          
+              const AppBarCustom(title: '',
+                  isCenter: true,
+                  showSettingIcon: false),
+            ],
+          ),
         ),
       ),
     );

@@ -5,9 +5,11 @@ import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../../../Data/app_assets.dart';
 import '../../../Data/app_strings.dart';
+import '../../../shared/app_bar.dart';
 import '../../../shared/background.dart';
 import '../../../shared/global_var_and_fun.dart';
 import '../../../shared/theme.dart';
+import '../global_nav_bar.dart';
 import 'about_us_screen_data.dart';
 import 'about_us_screen_logic.dart';
 
@@ -31,59 +33,71 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: CommonUsedWidget.background(
-        child: SafeArea(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    FadeInDown(
-                      duration: const Duration(milliseconds: 700),
-                      curve: Curves.easeOutCubic,
-                      child: headingAndSubtitleTop(),
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const GlobalNavBar()),
+              (Route<dynamic> route) => false, // Remove all previous routes
+        );
+        return false;
+      },
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: CommonUsedWidget.background(
+          child: Stack(
+            children: [
+              SafeArea(
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          FadeInDown(
+                            duration: const Duration(milliseconds: 700),
+                            curve: Curves.easeOutCubic,
+                            child: headingAndSubtitleTop(),
+                          ),
+                          FadeIn(
+                            duration: const Duration(milliseconds: 800),
+                            delay: const Duration(milliseconds: 200),
+                            curve: Curves.easeIn,
+                            child: topImageWidget(),
+                          ),
+                          socialMedia(),
+                          FadeInLeft(
+                            duration: const Duration(milliseconds: 600),
+                            delay: const Duration(milliseconds: 600),
+                            curve: Curves.easeOutQuart,
+                            child: mitLicence(),
+                          ),
+                          FadeInRight(
+                            duration: const Duration(milliseconds: 600),
+                            delay: const Duration(milliseconds: 600),
+                            curve: Curves.easeOutQuart,
+                            child: aboutText(),
+                          ),
+                          FadeInDown(
+                            duration: const Duration(milliseconds: 600),
+                            delay: const Duration(milliseconds: 600),
+                            curve: Curves.easeOutQuart,
+                            child: socialProfileSelf(),
+                          ),
+                          // experience()
+                        ],
+                      ),
                     ),
-                    FadeIn(
-                      duration: const Duration(milliseconds: 800),
-                      delay: const Duration(milliseconds: 200),
-                      curve: Curves.easeIn,
-                      child: topImageWidget(),
-                    ),
-                    FadeInRightBig(
-                      duration: const Duration(milliseconds: 600),
-                      delay: const Duration(milliseconds: 400),
-                      curve: Curves.easeOutQuart,
-                      child: socialMedia(),
-                    ),
-                    FadeInLeft(
-                      duration: const Duration(milliseconds: 600),
-                      delay: const Duration(milliseconds: 600),
-                      curve: Curves.easeOutQuart,
-                      child: mitLicence(),
-                    ),
-                    FadeInRight(
-                      duration: const Duration(milliseconds: 600),
-                      delay: const Duration(milliseconds: 600),
-                      curve: Curves.easeOutQuart,
-                      child: aboutText(),
-                    ),
-                    FadeInDown(
-                      duration: const Duration(milliseconds: 600),
-                      delay: const Duration(milliseconds: 600),
-                      curve: Curves.easeOutQuart,
-                      child: socialProfileSelf(),
-                    ),
-                    // experience()
-                  ],
+                  ),
                 ),
-              ),
-            ),
+              const AppBarCustom(title: '',
+                  isCenter: true,
+                  showSettingIcon: false),
+            ],
           ),
-      ),
+        ),
 
+      ),
     );
   }
 
@@ -284,17 +298,32 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
         physics: const AlwaysScrollableScrollPhysics(),
         child: Row(
           children: [
-            appButtonIcon(
-              iconName: MdiIcons.googlePlay,
-              fun: AboutUsScreenLogic.openAppOnPlayStore,
+            FadeInLeftBig(
+              duration: const Duration(milliseconds: 1300),
+              delay: const Duration(milliseconds: 400),
+              curve: Curves.bounceInOut,
+              child: appButtonIcon(
+                iconName: MdiIcons.googlePlay,
+                fun: AboutUsScreenLogic.openAppOnPlayStore,
+              ),
             ),
-            appButtonIcon(
-              iconName: MdiIcons.github,
-              fun: AboutUsScreenLogic.openGithubProject,
+            FadeIn(
+              duration: const Duration(milliseconds: 1300),
+              delay: const Duration(milliseconds: 800),
+              curve: Curves.decelerate,
+              child: appButtonIcon(
+                iconName: MdiIcons.github,
+                fun: AboutUsScreenLogic.openGithubProject,
+              ),
             ),
-            appButtonIcon(
-              iconName: MdiIcons.linkedin,
-              fun: AboutUsScreenLogic.openLinkedin,
+            FadeInRightBig(
+              duration: const Duration(milliseconds: 1300),
+              delay: const Duration(milliseconds: 400),
+              curve: Curves.bounceInOut,
+              child: appButtonIcon(
+                iconName: MdiIcons.linkedin,
+                fun: AboutUsScreenLogic.openLinkedin,
+              ),
             ),
           ],
         ),

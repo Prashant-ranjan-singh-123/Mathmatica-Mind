@@ -59,11 +59,14 @@ class _GameStarterTimerState extends State<GameStarterTimer> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: CommonUsedWidget.background(
-        child: Center(
-          child: Lottie.asset(appAssets.lottieTimer, repeat: false),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: CommonUsedWidget.background(
+          child: Center(
+            child: Lottie.asset(appAssets.lottieTimer, repeat: false),
+          ),
         ),
       ),
     );

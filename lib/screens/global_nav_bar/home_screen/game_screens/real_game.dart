@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:mathmatics_mind/shared/background.dart';
 import '../../../../Data/question_generate.dart';
+import '../../../../shared/alertBox.dart';
+import '../../../../shared/app_bar.dart';
 import '../../../../shared/theme.dart';
 import 'game_result_screen.dart';
 
@@ -231,24 +233,59 @@ class _RealGameState extends State<RealGame> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: CommonUsedWidget.background(
-        child: Column(
-          children: [
-            TimerWidget(time()),
-            Question(),
-            AnswerArea(),
-            fillAvailableSpace(),
-            giveInfoOfGame(),
-            fillAvailableSpace(),
-            keyPad(),
-          ],
+    return WillPopScope(
+      onWillPop: () async => MyAppAlertBox.showExitConfirmationDialog(
+          context: context,
+          Title: 'Confirm Quit',
+          Body:
+          'Exiting this screen will result in losing your current game progress.\n\nAre you sure you want to continue?',
+          FunYesButton: () {
+            Navigator.of(context).pop(true);
+            Navigator.of(context).pop(true);
+          }
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: CommonUsedWidget.background(
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  TimerWidget(time()),
+                  Question(),
+                  AnswerArea(),
+                  fillAvailableSpace(),
+                  giveInfoOfGame(),
+                  fillAvailableSpace(),
+                  keyPad(),
+                ],
+              ),
+              const AppBarCustom(
+                  title: '', isCenter: true, showSettingIcon: false),
+              SafeArea(
+                  child: IconButton(
+                      onPressed: () {
+                        MyAppAlertBox.showExitConfirmationDialog(
+                            context: context,
+                            Title: 'Confirm Quit',
+                            Body:
+                                'Exiting this screen will result in losing your current game progress.\n\nAre you sure you want to continue?',
+                            FunYesButton: () {
+                              Navigator.of(context).pop(true);
+                              Navigator.of(context).pop(true);
+                            }
+                          );
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                      )))
+            ],
+          ),
         ),
       ),
     );
   }
-
 
   Widget myColumn({required List<Widget> children}) {
     return Expanded(
@@ -257,7 +294,6 @@ class _RealGameState extends State<RealGame> {
       ),
     );
   }
-
 
   Widget Question() {
     return Card(

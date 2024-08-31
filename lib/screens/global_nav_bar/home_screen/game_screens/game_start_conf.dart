@@ -120,7 +120,7 @@ class _GameStartConfoState extends State<GameStartConfo> {
         SafeArea(
           child: SingleChildScrollView(
             child: SizedBox(
-              height: Get.height*0.9,
+              height: Get.height * 0.9,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -141,13 +141,8 @@ class _GameStartConfoState extends State<GameStartConfo> {
                     curve: Curves.elasticOut,
                     child: _buildLottieCard(),
                   ),
-                  FadeInRightBig(
-                    duration: const Duration(milliseconds: 600),
-                    delay: const Duration(milliseconds: 400),
-                    curve: Curves.easeOutQuart,
-                    child: _buildGameStartInfo(),
-                  ),
-                  FadeInLeft(
+                  _buildGameStartInfo(),
+                  FadeInUpBig(
                     duration: const Duration(milliseconds: 600),
                     delay: const Duration(milliseconds: 600),
                     curve: Curves.easeOutQuart,
@@ -186,7 +181,9 @@ class _GameStartConfoState extends State<GameStartConfo> {
         widthIs: Get.width * 0.7,
         heightIs: Get.width * 0.5,
         cardColor: ColorOfApp.card,
-        cardShadingColor: _isClicked? Colors.transparent : ColorOfApp.cardShadow.withOpacity(0.4),
+        cardShadingColor: _isClicked
+            ? Colors.transparent
+            : ColorOfApp.cardShadow.withOpacity(0.4),
         lottieAsset: appAssets.lottiePlayGame,
       ),
       onTapDown: (_) => setState(() => _isClicked = true),
@@ -201,9 +198,17 @@ class _GameStartConfoState extends State<GameStartConfo> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const Expanded(child: SizedBox()),
-        _buildInfoContainer('Total Question: $totalQusetion'),
+        FadeInLeftBig(
+            duration: const Duration(milliseconds: 600),
+            delay: const Duration(milliseconds: 400),
+            curve: Curves.easeOutQuart,
+            child: _buildInfoContainer('Total Question: $totalQusetion')),
         const Expanded(child: SizedBox()),
-        _buildInfoContainer('Difficulty: $difficultyIs'),
+        FadeInRightBig(
+            duration: const Duration(milliseconds: 600),
+            delay: const Duration(milliseconds: 400),
+            curve: Curves.easeOutQuart,
+            child: _buildInfoContainer('Difficulty: $difficultyIs')),
         const Expanded(child: SizedBox())
       ],
     );

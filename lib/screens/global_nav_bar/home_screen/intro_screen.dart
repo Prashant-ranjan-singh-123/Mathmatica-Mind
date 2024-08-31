@@ -2,11 +2,13 @@ import 'dart:core';
 import 'package:animate_do/animate_do.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mathmatics_mind/Data/app_assets.dart';
 import 'package:mathmatics_mind/shared/background.dart';
 import '../../../Data/quotes.dart';
+import '../../../shared/alertBox.dart';
 import '../../../shared/app_bar.dart';
 import '../../../shared/theme.dart';
 import '../setting_screen/setting_screen.dart';
@@ -86,96 +88,107 @@ class _IntroScreenState extends State<IntroScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: CommonUsedWidget.background(
-        child: Stack(
-          children: [
-            const AppBarCustom(
-              title: '',
-              isCenter: false,
-              showSettingIcon: false,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // SlideInRight(
-                    //   duration: const Duration(milliseconds: 600),
-                    //   child: heading_and_subtitle_top(),
-                    // ),
-                    // FadeInUp(
-                    //   duration: const Duration(milliseconds: 800),
-                    //   delay: const Duration(milliseconds: 300),
-                    //   child: CustomCoursalSclider(),
-                    // ),
-                    // ElasticInLeft(
-                    //   duration: const Duration(milliseconds: 1000),
-                    //   delay: const Duration(milliseconds: 600),
-                    //   child: types(),
-                    // ),
-                    // ZoomIn(
-                    //   duration: const Duration(milliseconds: 800),
-                    //   delay: const Duration(milliseconds: 900),
-                    //   child: grid_view_items(),
-                    // ),
+    return WillPopScope(
+      onWillPop: () async => MyAppAlertBox.showExitConfirmationDialog(
+          context: context,
+          Title: 'Confirm Exit',
+          Body:
+          'Are you sure you want to exit this game?',
+          FunYesButton: () {
+            SystemNavigator.pop();
+          }
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: CommonUsedWidget.background(
+          child: Stack(
+            children: [
+              const AppBarCustom(
+                title: '',
+                isCenter: false,
+                showSettingIcon: false,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // SlideInRight(
+                      //   duration: const Duration(milliseconds: 600),
+                      //   child: heading_and_subtitle_top(),
+                      // ),
+                      // FadeInUp(
+                      //   duration: const Duration(milliseconds: 800),
+                      //   delay: const Duration(milliseconds: 300),
+                      //   child: CustomCoursalSclider(),
+                      // ),
+                      // ElasticInLeft(
+                      //   duration: const Duration(milliseconds: 1000),
+                      //   delay: const Duration(milliseconds: 600),
+                      //   child: types(),
+                      // ),
+                      // ZoomIn(
+                      //   duration: const Duration(milliseconds: 800),
+                      //   delay: const Duration(milliseconds: 900),
+                      //   child: grid_view_items(),
+                      // ),
 
 
-                    // FadeInDown(
-                    //   duration: const Duration(milliseconds: 700),
-                    //   curve: Curves.easeOutCubic,
-                    //   child: heading_and_subtitle_top(),
-                    // ),
-                    // BounceInUp(
-                    //   duration: const Duration(milliseconds: 900),
-                    //   delay: const Duration(milliseconds: 400),
-                    //   curve: Curves.elasticOut,
-                    //   child: CustomCoursalSclider(),
-                    // ),
-                    // FlipInX(
-                    //   duration: const Duration(milliseconds: 800),
-                    //   delay: const Duration(milliseconds: 700),
-                    //   curve: Curves.decelerate,
-                    //   child: types(),
-                    // ),
-                    // ElasticInRight(
-                    //   duration: const Duration(milliseconds: 1500),
-                    //   delay: const Duration(milliseconds: 1000),
-                    //   curve: Curves.easeOutExpo,
-                    //   child: grid_view_items(),
-                    // ),
+                      // FadeInDown(
+                      //   duration: const Duration(milliseconds: 700),
+                      //   curve: Curves.easeOutCubic,
+                      //   child: heading_and_subtitle_top(),
+                      // ),
+                      // BounceInUp(
+                      //   duration: const Duration(milliseconds: 900),
+                      //   delay: const Duration(milliseconds: 400),
+                      //   curve: Curves.elasticOut,
+                      //   child: CustomCoursalSclider(),
+                      // ),
+                      // FlipInX(
+                      //   duration: const Duration(milliseconds: 800),
+                      //   delay: const Duration(milliseconds: 700),
+                      //   curve: Curves.decelerate,
+                      //   child: types(),
+                      // ),
+                      // ElasticInRight(
+                      //   duration: const Duration(milliseconds: 1500),
+                      //   delay: const Duration(milliseconds: 1000),
+                      //   curve: Curves.easeOutExpo,
+                      //   child: grid_view_items(),
+                      // ),
 
-                    FadeInDown(
-                      duration: const Duration(milliseconds: 700),
-                      curve: Curves.easeOutCubic,
-                      child: heading_and_subtitle_top(),
-                    ),
-                    BounceInUp(
-                      duration: const Duration(milliseconds: 900),
-                      delay: const Duration(milliseconds: 400),
-                      curve: Curves.elasticOut,
-                      child: CustomCoursalSclider(),
-                    ),
-                    FadeInLeft(
-                      duration: const Duration(milliseconds: 700),
-                      delay: const Duration(milliseconds: 600),
-                      curve: Curves.decelerate,
-                      child: types(),
-                    ),
-                    FadeInRightBig(
-                      duration: const Duration(milliseconds: 900),
-                      delay: const Duration(milliseconds: 1000),
-                      curve: Curves.bounceOut,
-                      child: grid_view_items(),
-                    ),
-                    // ... Other widgets
-                  ],
+                      FadeInDown(
+                        duration: const Duration(milliseconds: 700),
+                        curve: Curves.easeOutCubic,
+                        child: heading_and_subtitle_top(),
+                      ),
+                      BounceInUp(
+                        duration: const Duration(milliseconds: 900),
+                        delay: const Duration(milliseconds: 400),
+                        curve: Curves.elasticOut,
+                        child: CustomCoursalSclider(),
+                      ),
+                      FadeInLeft(
+                        duration: const Duration(milliseconds: 700),
+                        delay: const Duration(milliseconds: 600),
+                        curve: Curves.decelerate,
+                        child: types(),
+                      ),
+                      FadeInRightBig(
+                        duration: const Duration(milliseconds: 900),
+                        delay: const Duration(milliseconds: 1000),
+                        curve: Curves.bounceOut,
+                        child: grid_view_items(),
+                      ),
+                      // ... Other widgets
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

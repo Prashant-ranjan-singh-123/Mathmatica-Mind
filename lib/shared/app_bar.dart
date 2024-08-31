@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../screens/global_nav_bar/setting_screen/setting_screen.dart';
@@ -22,28 +23,41 @@ class AppBarCustom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: 100,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Colors.transparent,
-            ColorOfApp.cardShadow.withOpacity(0.8)
-          ],
-          begin: Alignment.bottomCenter,
-          end: Alignment.topCenter,
+    return FadeInDownBig(
+      delay:   Duration(milliseconds: 800),
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: 100,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.transparent,
+              ColorOfApp.cardShadow.withOpacity(0.8)
+            ],
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+          ),
         ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.only(left: 15),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            if (isCenter)
-              Center(
-                child: Text(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              if (isCenter)
+                Center(
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                      fontFamily: 'Roboto',
+                      fontWeight: FontWeight.w800,
+                      fontSize: 25,
+                      color: ColorOfApp.textBold,
+                    ),
+                  ),
+                )
+              else
+                Text(
                   title,
                   style: const TextStyle(
                     fontFamily: 'Roboto',
@@ -52,31 +66,21 @@ class AppBarCustom extends StatelessWidget {
                     color: ColorOfApp.textBold,
                   ),
                 ),
-              )
-            else
-              Text(
-                title,
-                style: const TextStyle(
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w800,
-                  fontSize: 25,
-                  color: ColorOfApp.textBold,
-                ),
-              ),
-            if (showSettingIcon)
-              Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: IconButton(
-                    onPressed: () {
-                      settingFun();
-                    },
-                    icon: const Icon(
-                      Icons.settings,
-                      color: Colors.white,
-                      size: 25,
-                    ),
-                  ))
-          ],
+              if (showSettingIcon)
+                Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: IconButton(
+                      onPressed: () {
+                        settingFun();
+                      },
+                      icon: const Icon(
+                        Icons.settings,
+                        color: Colors.white,
+                        size: 25,
+                      ),
+                    ))
+            ],
+          ),
         ),
       ),
     );

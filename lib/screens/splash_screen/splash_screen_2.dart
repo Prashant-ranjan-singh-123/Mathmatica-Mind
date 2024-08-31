@@ -1,24 +1,22 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mathmatics_mind/Data/app_strings.dart';
-import 'package:mathmatics_mind/screens/splash_screen/splash_screen_2.dart';
 import 'package:mathmatics_mind/shared/background.dart';
 import '../../Data/app_assets.dart';
 import '../../check_first_time.dart';
 import '../../shared/global_var_and_fun.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class SplashScreen2 extends StatefulWidget {
+  const SplashScreen2({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<SplashScreen2> createState() => _SplashScreen2State();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreen2State extends State<SplashScreen2> {
   final appAssets = Get.find<AppAssets>();
   final appString = Get.find<AppStrings>();
 
@@ -30,15 +28,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(milliseconds: 100), (){
-      Get.off(const SplashScreen2());
+    Future.delayed(const Duration(milliseconds: 3500), (){
+      Get.off(const CheckFirstTime());
     });
     return Scaffold(
       backgroundColor: Colors.black,
       body: CommonUsedWidget.background(
         child: myCustomColumn(children: [
-          FadeOut(child: SizedBox())
-          //Lottie.asset(appAssets.lottieHello, repeat: false)
+          Lottie.asset(appAssets.lottieHello, repeat: false)
         ]),
       ),
     );
